@@ -8,12 +8,7 @@ namespace roider.Controllers
 {
     public class StudentsController : Controller
     {
-        private readonly Students _studentsModel;
-
-        public StudentsController()
-        {
-            _studentsModel = new Students();
-        }
+        private readonly Students _studentsModel = new();
 
         // GET: Students
         public IActionResult Index()
@@ -93,7 +88,8 @@ namespace roider.Controllers
         }
 
         // POST: Students/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {

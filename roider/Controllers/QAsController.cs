@@ -8,12 +8,7 @@ namespace roider.Controllers
 {
     public class QAsController : Controller
     {
-        private readonly QAs _qasModel;
-
-        public QAsController()
-        {
-            _qasModel = new QAs();
-        }
+        private readonly QAs _qasModel = new();
 
         // GET: QAs
         public IActionResult Index()

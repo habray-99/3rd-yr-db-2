@@ -8,12 +8,7 @@ namespace roider.Controllers
 {
     public class ProgressesController : Controller
     {
-        private readonly Progresses _progressesModel;
-
-        public ProgressesController()
-        {
-            _progressesModel = new Progresses();
-        }
+        private readonly Progresses _progressesModel = new();
 
         // GET: Progresses
         public IActionResult Index()

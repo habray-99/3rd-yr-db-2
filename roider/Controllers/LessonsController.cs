@@ -8,12 +8,7 @@ namespace roider.Controllers
 {
     public class LessonsController : Controller
     {
-        private readonly Lessons _lessonsModel;
-
-        public LessonsController()
-        {
-            _lessonsModel = new Lessons();
-        }
+        private readonly Lessons _lessonsModel = new();
 
         // GET: Lessons
         public IActionResult Index()

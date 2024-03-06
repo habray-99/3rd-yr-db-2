@@ -8,12 +8,7 @@ namespace roider.Controllers
 {
     public class CoursesController : Controller
     {
-        private readonly Courses _coursesModel;
-
-        public CoursesController()
-        {
-            _coursesModel = new Courses();
-        }
+        private readonly Courses _coursesModel = new();
 
         // GET: Courses
         public IActionResult Index()
@@ -33,12 +28,9 @@ namespace roider.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Courses course)
         {
-            if (ModelState.IsValid)
-            {
-                _coursesModel.AddCourse(course);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(course);
+            if (!ModelState.IsValid) return View(course);
+            _coursesModel.AddCourse(course);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Courses/Edit/5

@@ -8,12 +8,7 @@ namespace roider.Controllers
 {
     public class EnrollmentsController : Controller
     {
-        private readonly Enrollments _enrollmentsModel;
-
-        public EnrollmentsController()
-        {
-            _enrollmentsModel = new Enrollments();
-        }
+        private readonly Enrollments _enrollmentsModel = new();
 
         // GET: Enrollments
         public IActionResult Index()
