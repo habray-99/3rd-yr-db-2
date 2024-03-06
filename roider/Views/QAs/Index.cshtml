@@ -1,18 +1,41 @@
 ﻿@model System.Collections.Generic.List<QAs>
 
 @{
-    Layout = null;
+    ViewBag.Title = "title";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Q&A Records</h2>
+<a class="btn btn-success" asp-action="Create">Create Q&A Record</a>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<table class="table">
+    <thead>
+        <tr>
+            <th>QA ID</th>
+            <th>Student ID</th>
+            <th>Course ID</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Feedback Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var qa in Model)
+        {
+            <tr>
+                <td>@qa.Qaid</td>
+                <td>@qa.StudentId</td>
+                <td>@qa.CourseID</td>
+                <td>@qa.Question</td>
+                <td>@qa.Answer</td>
+                <td>@qa.FeedbackDate.ToString("d")</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@qa.Qaid">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@qa.Qaid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
