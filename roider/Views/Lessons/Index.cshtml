@@ -1,18 +1,37 @@
 ﻿@model System.Collections.Generic.List<roider.Models.Lessons>
 
 @{
-    Layout = null;
+    ViewBag.Title = "title";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Lessons</h2>
+<a class="btn btn-success" asp-action="Create">Create Lesson</a>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lesson ID</th>
+            <th>Lesson Title</th>
+            <th>Content Type</th>
+            <th>Course ID</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lesson in Model)
+        {
+            <tr>
+                <td>@lesson.LessonID</td>
+                <td>@lesson.LessonTitle</td>
+                <td>@lesson.LessonContentType</td>
+                <td>@lesson.CourseID</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@lesson.LessonID">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@lesson.LessonID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
