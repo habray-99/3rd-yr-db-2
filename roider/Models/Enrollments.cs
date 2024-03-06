@@ -91,7 +91,7 @@ public class Enrollments
         {
             using (OracleConnection con = new OracleConnection(ValuesConstants.DbString))
             {
-                string queryString = "SELECT EnrollmentID, StudentID, CourseID, EnrollDate FROM Enrollments";
+                string queryString = "SELECT EnrollmentID, StudentID, CourseID, EnrollDate FROM Enrollment";
                 OracleCommand cmd = new OracleCommand(queryString, con);
                 cmd.BindByName = true;
                 cmd.CommandType = CommandType.Text;
