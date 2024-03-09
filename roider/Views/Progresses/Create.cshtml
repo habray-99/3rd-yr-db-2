@@ -1,18 +1,38 @@
-﻿@model dynamic
+﻿@model roider.Models.Progresses
 
 @{
-    Layout = null;
+    ViewBag.Title = "Create Progress";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Create Progress</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="StudentId" class="control-label"></label>
+        <input asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LessonId" class="control-label"></label>
+        <input asp-for="LessonId" class="form-control" />
+        <span asp-validation-for="LessonId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LessonStatus" class="control-label"></label>
+        <input asp-for="LessonStatus" class="form-control" />
+        <span asp-validation-for="LessonStatus" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastAccessedDate" class="control-label"></label>
+        <input asp-for="LastAccessedDate" class="form-control" />
+        <span asp-validation-for="LastAccessedDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
 <div>
-      
+    <a asp-action="Index">Back to List</a>
 </div>
-</body>
-</html>
