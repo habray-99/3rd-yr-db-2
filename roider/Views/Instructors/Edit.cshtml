@@ -1,18 +1,45 @@
 ﻿@model roider.Models.Instructors
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit Instructor";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Edit Instructor</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="InstructorId" />
+    <div class="form-group">
+        <label asp-for="InstructorName" class="control-label"></label>
+        <input asp-for="InstructorName" class="form-control" />
+        <span asp-validation-for="InstructorName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Contact" class="control-label"></label>
+        <input asp-for="Contact" class="form-control" />
+        <span asp-validation-for="Contact" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmailAddress" class="control-label"></label>
+        <input asp-for="EmailAddress" class="form-control" />
+        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Specialization" class="control-label"></label>
+        <input asp-for="Specialization" class="form-control" />
+        <span asp-validation-for="Specialization" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="YearsOfExperience" class="control-label"></label>
+        <input asp-for="YearsOfExperience" class="form-control" />
+        <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Country" class="control-label"></label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

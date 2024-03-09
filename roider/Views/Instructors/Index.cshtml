@@ -24,7 +24,7 @@
         @foreach (var instructor in Model)
         {
             <tr>
-                <td>@instructor.InstructorID</td>
+                <td>@instructor.InstructorId</td>
                 <td>@instructor.InstructorName</td>
                 <td>@instructor.Contact</td>
                 <td>@instructor.EmailAddress</td>
@@ -32,8 +32,8 @@
                 <td>@instructor.YearsOfExperience</td>
                 <td>@instructor.Country</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@instructor.InstructorID">Edit</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@instructor.InstructorID">Delete</a>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@instructor.InstructorId">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@instructor.InstructorId">Delete</a>
                 </td>
             </tr>
         }
