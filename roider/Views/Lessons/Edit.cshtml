@@ -1,18 +1,30 @@
 ﻿@model roider.Models.Lessons
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit Lesson";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Edit Lesson</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="LessonId" />
+    <div class="form-group">
+        <label asp-for="LessonTitle" class="control-label"></label>
+        <input asp-for="LessonTitle" class="form-control" />
+        <span asp-validation-for="LessonTitle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LessonContentType" class="control-label"></label>
+        <input asp-for="LessonContentType" class="form-control" />
+        <span asp-validation-for="LessonContentType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId" class="control-label"></label>
+        <input asp-for="CourseId" class="form-control" />
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

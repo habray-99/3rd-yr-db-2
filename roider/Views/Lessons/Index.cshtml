@@ -22,13 +22,13 @@
         @foreach (var lesson in Model)
         {
             <tr>
-                <td>@lesson.LessonID</td>
+                <td>@lesson.LessonId</td>
                 <td>@lesson.LessonTitle</td>
                 <td>@lesson.LessonContentType</td>
-                <td>@lesson.CourseID</td>
+                <td>@lesson.CourseId</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@lesson.LessonID">Edit</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@lesson.LessonID">Delete</a>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@lesson.LessonId">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@lesson.LessonId">Delete</a>
                 </td>
             </tr>
         }

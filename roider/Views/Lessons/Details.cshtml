@@ -1,18 +1,38 @@
 ﻿@model roider.Models.Lessons
 
 @{
-    Layout = null;
+    ViewBag.Title = "Lesson Details";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Lesson Details</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
 <div>
-      
+    <h4>Lessons</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonTitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonContentType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonContentType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseId)
+        </dd>
+    </dl>
 </div>
-</body>
-</html>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LessonId">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.LessonId">Delete</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
