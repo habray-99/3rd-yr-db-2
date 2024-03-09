@@ -57,7 +57,7 @@ namespace roider.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Students student)
         {
-            if (id != student.StudentID)
+            if (id != student.StudentId)
             {
                 return NotFound();
             }

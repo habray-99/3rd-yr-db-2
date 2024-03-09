@@ -30,7 +30,7 @@ namespace roider.Controllers
         {
             if (ModelState.IsValid)
             {
-                _qasModel.AddQA(qa);
+                _qasModel.AddQa(qa);
                 return RedirectToAction(nameof(Index));
             }
             return View(qa);
@@ -44,7 +44,7 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var qa = _qasModel.FetchQAById(id);
+            var qa = _qasModel.FetchQaById(id);
             if (qa == null)
             {
                 return NotFound();
@@ -64,7 +64,7 @@ namespace roider.Controllers
 
             if (ModelState.IsValid)
             {
-                _qasModel.EditQA(qa, id);
+                _qasModel.EditQa(qa, id);
                 return RedirectToAction(nameof(Index));
             }
             return View(qa);
@@ -78,7 +78,7 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var qa = _qasModel.FetchQAById(id);
+            var qa = _qasModel.FetchQaById(id);
             if (qa == null)
             {
                 return NotFound();
@@ -92,7 +92,7 @@ namespace roider.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            _qasModel.DeleteQA(id);
+            _qasModel.DeleteQa(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -104,7 +104,7 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var qa = _qasModel.FetchQAById(id);
+            var qa = _qasModel.FetchQaById(id);
             if (qa == null)
             {
                 return NotFound();

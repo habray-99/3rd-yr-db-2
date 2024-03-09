@@ -57,7 +57,7 @@ namespace roider.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Progresses progress)
         {
-            if (id != progress.ProgressID)
+            if (id != progress.ProgressId)
             {
                 return NotFound();
             }
