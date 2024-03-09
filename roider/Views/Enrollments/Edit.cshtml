@@ -1,18 +1,33 @@
 ﻿@model roider.Models.Enrollments
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit Enrollment";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Edit Enrollment</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="EnrollmentId" />
+    <div class="form-group">
+        <label asp-for="EnrollmentId" class="control-label"></label>
+        <input asp-for="EnrollmentId" class="form-control" />
+        <span asp-validation-for="EnrollmentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentId" class="control-label"></label>
+        <input asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId" class="control-label"></label>
+        <input asp-for="CourseId" class="form-control" />
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
 <div>
-      
+    <a asp-action="Index">Back to List</a>
 </div>
-</body>
-</html>

@@ -21,13 +21,13 @@
         @foreach (var enrollment in Model)
         {
             <tr>
-                <td>@enrollment.EnrollmentID</td>
-                <td>@enrollment.StudentID</td>
-                <td>@enrollment.CourseID</td>
+                <td>@enrollment.EnrollmentId</td>
+                <td>@enrollment.StudentId</td>
+                <td>@enrollment.CourseId</td>
                 <td>@enrollment.EnrollDate</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@enrollment.EnrollmentID">Edit</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@enrollment.EnrollmentID">Delete</a>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@enrollment.EnrollmentId">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@enrollment.EnrollmentId">Delete</a>
                 </td>
             </tr>
         }

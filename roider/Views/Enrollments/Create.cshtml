@@ -1,8 +1,33 @@
-﻿@model dynamic
+﻿@model roider.Models.Enrollments
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Create Enrollment";
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Create Enrollment</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="EnrollmentId" class="control-label"></label>
+        <input asp-for="EnrollmentId" class="form-control" />
+        <span asp-validation-for="EnrollmentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentId" class="control-label"></label>
+        <input asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId" class="control-label"></label>
+        <input asp-for="CourseId" class="form-control" />
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
