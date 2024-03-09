@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("roider")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bce0c60e1ea246034aa04d2b309acfd938ecf9e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03263d374a79a2a3ee40bca64fa3268ba8a3b807")]
 [assembly: System.Reflection.AssemblyProductAttribute("roider")]
 [assembly: System.Reflection.AssemblyTitleAttribute("roider")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
