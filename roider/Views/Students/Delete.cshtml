@@ -1,7 +1,7 @@
 ﻿@model roider.Models.Students
 
 @{
-    ViewBag.Title = "Delete Student";
+    ViewBag.Title = "Delete Student";Layout = "_Layout";
 }
 
 <h2>Delete Student</h2>
@@ -12,10 +12,10 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentID)
+            @Html.DisplayNameFor(model => model.StudentId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StudentID)
+            @Html.DisplayFor(model => model.StudentId)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.StudentName)
@@ -30,10 +30,10 @@
             @Html.DisplayFor(model => model.Contact)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DOB)
+            @Html.DisplayNameFor(model => model.Dob)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DOB)
+            @Html.DisplayFor(model => model.Dob)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.EmailAddress)
@@ -49,7 +49,7 @@
         </dd>
     </dl>
 
-    <form asp-action="DeleteConfirmed" asp-route-id="@Model.StudentID">
+    <form asp-action="DeleteConfirmed" asp-route-id="@Model.StudentId">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
