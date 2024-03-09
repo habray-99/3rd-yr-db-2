@@ -1,18 +1,40 @@
-﻿@model QAs
+﻿@model roider.Models.QAs
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit Q&A";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Edit Q&A</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Qaid" />
+    <div class="form-group">
+        <label asp-for="StudentId" class="control-label"></label>
+        <input asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId" class="control-label"></label>
+        <input asp-for="CourseId" class="form-control" />
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Question" class="control-label"></label>
+        <input asp-for="Question" class="form-control" />
+        <span asp-validation-for="Question" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Answer" class="control-label"></label>
+        <input asp-for="Answer" class="form-control" />
+        <span asp-validation-for="Answer" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FeedbackDate" class="control-label"></label>
+        <input asp-for="FeedbackDate" class="form-control" />
+        <span asp-validation-for="FeedbackDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

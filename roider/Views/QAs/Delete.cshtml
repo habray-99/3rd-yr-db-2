@@ -1,18 +1,51 @@
-﻿@model QAs
+﻿@model roider.Models.QAs
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete Q&A";
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<h2>Delete Q&A</h2>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
+<h3>Are you sure you want to delete this Q&A record?</h3>
 <div>
-      
+    <h4>Q&A</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedbackDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FeedbackDate)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" asp-route-id="@Model.Qaid">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
 </div>
-</body>
-</html>
