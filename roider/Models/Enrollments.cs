@@ -6,15 +6,15 @@ namespace roider.Models;
 
 public class Enrollments
 {
+    public int EnrollmentId { get; init; }
+    public int StudentId { get; init; }
+    public string CourseId { get; init; }
+    public DateTime EnrollDate { get; init; }
+
+
     public List<Enrollments> EnrollmentsList = [];
-    public int EnrollmentID { get; set; }
-    public int StudentID { get; set; }
-
-    public string CourseID { get; set; }
-    public DateTime EnrollDate { get; set; }
-
-    public Students Student { get; set; }
-    public Courses Course { get; set; }
+    public Students Student { get; init; }
+    public Courses Course { get; init; }
     
     public void AddEnrollment(Enrollments enrollment)
     {
@@ -24,9 +24,9 @@ public class Enrollments
             {
                 string queryString = "INSERT INTO Enrollments (EnrollmentID, StudentID, CourseID, EnrollDate) VALUES (:EnrollmentID, :StudentID, :CourseID, :EnrollDate)";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("EnrollmentID", OracleDbType.Int32).Value = enrollment.EnrollmentID;
-                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = enrollment.StudentID;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = enrollment.CourseID;
+                cmd.Parameters.Add("EnrollmentID", OracleDbType.Int32).Value = enrollment.EnrollmentId;
+                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = enrollment.StudentId;
+                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = enrollment.CourseId;
                 cmd.Parameters.Add("EnrollDate", OracleDbType.Date).Value = enrollment.EnrollDate;
 
                 con.Open();
@@ -48,8 +48,8 @@ public class Enrollments
             {
                 string queryString = "UPDATE Enrollments SET StudentID = :StudentID, CourseID = :CourseID, EnrollDate = :EnrollDate WHERE EnrollmentID = :OldEnrollmentID";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = enrollment.StudentID;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = enrollment.CourseID;
+                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = enrollment.StudentId;
+                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = enrollment.CourseId;
                 cmd.Parameters.Add("EnrollDate", OracleDbType.Date).Value = enrollment.EnrollDate;
                 cmd.Parameters.Add("OldEnrollmentID", OracleDbType.Int32).Value = oldEnrollmentId;
 
@@ -102,9 +102,9 @@ public class Enrollments
                 {
                     Enrollments enrollment = new Enrollments
                     {
-                        EnrollmentID = reader.GetInt32(0),
-                        StudentID = reader.GetInt32(1),
-                        CourseID = reader.GetString(2),
+                        EnrollmentId = reader.GetInt32(0),
+                        StudentId = reader.GetInt32(1),
+                        CourseId = reader.GetString(2),
                         EnrollDate = reader.GetDateTime(3)
                     };
                     enrollmentsList.Add(enrollment);
@@ -138,9 +138,9 @@ public class Enrollments
                 {
                     enrollment = new Enrollments
                     {
-                        EnrollmentID = reader.GetInt32(0),
-                        StudentID = reader.GetInt32(1),
-                        CourseID = reader.GetString(2),
+                        EnrollmentId = reader.GetInt32(0),
+                        StudentId = reader.GetInt32(1),
+                        CourseId = reader.GetString(2),
                         EnrollDate = reader.GetDateTime(3)
                     };
                 }

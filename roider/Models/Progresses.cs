@@ -7,14 +7,14 @@ namespace roider.Models;
 public class Progresses
 {
     public List<Progresses> ProgressesList = [];
-    public int ProgressID { get; set; }
-    public int StudentID { get; set; }
-    public int LessonID { get; set; }
-    public string LessonStatus { get; set; }
-    public DateTime LastAccessedDate { get; set; }
+    public int ProgressId { get; init; }
+    public int StudentId { get; init; }
+    public int LessonId { get; init; }
+    public string LessonStatus { get; init; }
+    public DateTime LastAccessedDate { get; init; }
 
-    public Students Student { get; set; }
-    public Lessons Lesson { get; set; }
+    public Students Student { get; init; }
+    public Lessons Lesson { get; init; }
     
     public void AddProgress(Progresses progress)
     {
@@ -24,9 +24,9 @@ public class Progresses
             {
                 string queryString = "INSERT INTO Progresses (ProgressID, StudentID, LessonID, LessonStatus, LastAccessedDate) VALUES (:ProgressID, :StudentID, :LessonID, :LessonStatus, :LastAccessedDate)";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("ProgressID", OracleDbType.Int32).Value = progress.ProgressID;
-                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = progress.StudentID;
-                cmd.Parameters.Add("LessonID", OracleDbType.Int32).Value = progress.LessonID;
+                cmd.Parameters.Add("ProgressID", OracleDbType.Int32).Value = progress.ProgressId;
+                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = progress.StudentId;
+                cmd.Parameters.Add("LessonID", OracleDbType.Int32).Value = progress.LessonId;
                 cmd.Parameters.Add("LessonStatus", OracleDbType.Varchar2).Value = progress.LessonStatus;
                 cmd.Parameters.Add("LastAccessedDate", OracleDbType.Date).Value = progress.LastAccessedDate;
 
@@ -48,8 +48,8 @@ public class Progresses
             {
                 string queryString = "UPDATE Progresses SET StudentID = :StudentID, LessonID = :LessonID, LessonStatus = :LessonStatus, LastAccessedDate = :LastAccessedDate WHERE ProgressID = :OldProgressID";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = progress.StudentID;
-                cmd.Parameters.Add("LessonID", OracleDbType.Int32).Value = progress.LessonID;
+                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = progress.StudentId;
+                cmd.Parameters.Add("LessonID", OracleDbType.Int32).Value = progress.LessonId;
                 cmd.Parameters.Add("LessonStatus", OracleDbType.Varchar2).Value = progress.LessonStatus;
                 cmd.Parameters.Add("LastAccessedDate", OracleDbType.Date).Value = progress.LastAccessedDate;
                 cmd.Parameters.Add("OldProgressID", OracleDbType.Int32).Value = oldProgressId;
@@ -103,9 +103,9 @@ public class Progresses
                 {
                     Progresses progress = new Progresses
                     {
-                        ProgressID = reader.GetInt32(0),
-                        StudentID = reader.GetInt32(1),
-                        LessonID = reader.GetInt32(2),
+                        ProgressId = reader.GetInt32(0),
+                        StudentId = reader.GetInt32(1),
+                        LessonId = reader.GetInt32(2),
                         LessonStatus = reader.GetString(3),
                         LastAccessedDate = reader.GetDateTime(4)
                     };
@@ -140,9 +140,9 @@ public class Progresses
                 {
                     progress = new Progresses
                     {
-                        ProgressID = reader.GetInt32(0),
-                        StudentID = reader.GetInt32(1),
-                        LessonID = reader.GetInt32(2),
+                        ProgressId = reader.GetInt32(0),
+                        StudentId = reader.GetInt32(1),
+                        LessonId = reader.GetInt32(2),
                         LessonStatus = reader.GetString(3),
                         LastAccessedDate = reader.GetDateTime(4)
                     };

@@ -7,12 +7,12 @@ namespace roider.Models;
 public class Students
 {
     public List<Students> StudentsList = [];
-    public int StudentID { get; set; }
-    public string StudentName { get; set; }
-    public string Contact { get; set; }
-    public DateTime DOB { get; set; }
-    public string EmailAddress { get; set; }
-    public string Country { get; set; }
+    public int StudentId { get; init; }
+    public string StudentName { get; init; }
+    public string Contact { get; init; }
+    public DateTime Dob { get; init; }
+    public string EmailAddress { get; init; }
+    public string Country { get; init; }
 
     public void GetStudents()
     {
@@ -31,10 +31,10 @@ public class Students
             {
                 var student = new Students
                 {
-                    StudentID = reader.GetInt32(0),
+                    StudentId = reader.GetInt32(0),
                     StudentName = reader.GetString(1),
                     Contact = reader.GetString(2),
-                    DOB = reader.GetDateTime(3),
+                    Dob = reader.GetDateTime(3),
                     EmailAddress = reader.GetString(4),
                     Country = reader.GetString(5)
                 };
@@ -59,10 +59,10 @@ public class Students
                 const string queryString =
                     "INSERT INTO Students (StudentID, StudentName, Contact, DOB, EmailAddress, Country) VALUES (:StudentID, :StudentName, :Contact, :DOB, :EmailAddress, :Country)";
                 var cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = student.StudentID;
+                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = student.StudentId;
                 cmd.Parameters.Add("StudentName", OracleDbType.Varchar2).Value = student.StudentName;
                 cmd.Parameters.Add("Contact", OracleDbType.Varchar2).Value = student.Contact;
-                cmd.Parameters.Add("DOB", OracleDbType.Date).Value = student.DOB;
+                cmd.Parameters.Add("DOB", OracleDbType.Date).Value = student.Dob;
                 cmd.Parameters.Add("EmailAddress", OracleDbType.Varchar2).Value = student.EmailAddress;
                 cmd.Parameters.Add("Country", OracleDbType.Varchar2).Value = student.Country;
 
@@ -87,7 +87,7 @@ public class Students
                 OracleCommand cmd = new OracleCommand(queryString, con);
                 cmd.Parameters.Add("StudentName", OracleDbType.Varchar2).Value = student.StudentName;
                 cmd.Parameters.Add("Contact", OracleDbType.Varchar2).Value = student.Contact;
-                cmd.Parameters.Add("DOB", OracleDbType.Date).Value = student.DOB;
+                cmd.Parameters.Add("DOB", OracleDbType.Date).Value = student.Dob;
                 cmd.Parameters.Add("EmailAddress", OracleDbType.Varchar2).Value = student.EmailAddress;
                 cmd.Parameters.Add("Country", OracleDbType.Varchar2).Value = student.Country;
                 cmd.Parameters.Add("OldStudentID", OracleDbType.Int32).Value = oldStudentId;
@@ -142,10 +142,10 @@ public class Students
                 {
                     Students student = new Students
                     {
-                        StudentID = reader.GetInt32(0),
+                        StudentId = reader.GetInt32(0),
                         StudentName = reader.GetString(1),
                         Contact = reader.GetString(2),
-                        DOB = reader.GetDateTime(3),
+                        Dob = reader.GetDateTime(3),
                         EmailAddress = reader.GetString(4),
                         Country = reader.GetString(5)
                     };
@@ -180,10 +180,10 @@ public class Students
                 {
                     student = new Students
                     {
-                        StudentID = reader.GetInt32(0),
+                        StudentId = reader.GetInt32(0),
                         StudentName = reader.GetString(1),
                         Contact = reader.GetString(2),
-                        DOB = reader.GetDateTime(3),
+                        Dob = reader.GetDateTime(3),
                         EmailAddress = reader.GetString(4),
                         Country = reader.GetString(5)
                     };

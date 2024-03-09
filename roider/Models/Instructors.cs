@@ -7,13 +7,13 @@ namespace roider.Models;
 public class Instructors
 {
     public List<Instructors> InstructorsList = [];
-    public int InstructorID { get; set; }
-    public string InstructorName { get; set; }
-    public string Contact { get; set; }
-    public string EmailAddress { get; set; }
-    public string Specialization { get; set; }
-    public int YearsOfExperience { get; set; }
-    public string Country { get; set; }
+    public int InstructorId { get; init; }
+    public string InstructorName { get; init; }
+    public string Contact { get; init; }
+    public string EmailAddress { get; init; }
+    public string Specialization { get; init; }
+    public int YearsOfExperience { get; init; }
+    public string Country { get; init; }
     
     public void AddInstructor(Instructors instructor)
     {
@@ -23,7 +23,7 @@ public class Instructors
             {
                 string queryString = "INSERT INTO Instructors (InstructorID, InstructorName, Contact, EmailAddress, Specialization, YearsOfExperience, Country) VALUES (:InstructorID, :InstructorName, :Contact, :EmailAddress, :Specialization, :YearsOfExperience, :Country)";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("InstructorID", OracleDbType.Int32).Value = instructor.InstructorID;
+                cmd.Parameters.Add("InstructorID", OracleDbType.Int32).Value = instructor.InstructorId;
                 cmd.Parameters.Add("InstructorName", OracleDbType.Varchar2).Value = instructor.InstructorName;
                 cmd.Parameters.Add("Contact", OracleDbType.Varchar2).Value = instructor.Contact;
                 cmd.Parameters.Add("EmailAddress", OracleDbType.Varchar2).Value = instructor.EmailAddress;
@@ -105,7 +105,7 @@ public class Instructors
                 {
                     Instructors instructor = new Instructors
                     {
-                        InstructorID = reader.GetInt32(0),
+                        InstructorId = reader.GetInt32(0),
                         InstructorName = reader.GetString(1),
                         Contact = reader.GetString(2),
                         EmailAddress = reader.GetString(3),
@@ -144,7 +144,7 @@ public class Instructors
                 {
                     instructor = new Instructors
                     {
-                        InstructorID = reader.GetInt32(0),
+                        InstructorId = reader.GetInt32(0),
                         InstructorName = reader.GetString(1),
                         Contact = reader.GetString(2),
                         EmailAddress = reader.GetString(3),

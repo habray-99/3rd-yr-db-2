@@ -7,13 +7,13 @@ namespace roider.Models;
 public class Lessons
 {
     public List<Lessons> LessonsList = [];
-    public int LessonID { get; set; }
-    public string LessonTitle { get; set; }
-    public string LessonContentType { get; set; }
+    public int LessonId { get; init; }
+    public string LessonTitle { get; init; }
+    public string LessonContentType { get; init; }
 
-    public string CourseID { get; set; }
+    public string CourseId { get; init; }
 
-    public Courses Course { get; set; }
+    public Courses Course { get; init; }
     
     public void AddLesson(Lessons lesson)
     {
@@ -23,10 +23,10 @@ public class Lessons
             {
                 string queryString = "INSERT INTO Lessons (LessonID, LessonTitle, LessonContentType, CourseID) VALUES (:LessonID, :LessonTitle, :LessonContentType, :CourseID)";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("LessonID", OracleDbType.Int32).Value = lesson.LessonID;
+                cmd.Parameters.Add("LessonID", OracleDbType.Int32).Value = lesson.LessonId;
                 cmd.Parameters.Add("LessonTitle", OracleDbType.Varchar2).Value = lesson.LessonTitle;
                 cmd.Parameters.Add("LessonContentType", OracleDbType.Varchar2).Value = lesson.LessonContentType;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = lesson.CourseID;
+                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = lesson.CourseId;
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -48,7 +48,7 @@ public class Lessons
                 OracleCommand cmd = new OracleCommand(queryString, con);
                 cmd.Parameters.Add("LessonTitle", OracleDbType.Varchar2).Value = lesson.LessonTitle;
                 cmd.Parameters.Add("LessonContentType", OracleDbType.Varchar2).Value = lesson.LessonContentType;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = lesson.CourseID;
+                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = lesson.CourseId;
                 cmd.Parameters.Add("OldLessonID", OracleDbType.Int32).Value = oldLessonId;
 
                 con.Open();
@@ -99,10 +99,10 @@ public class Lessons
                 {
                     Lessons lesson = new Lessons
                     {
-                        LessonID = reader.GetInt32(0),
+                        LessonId = reader.GetInt32(0),
                         LessonTitle = reader.GetString(1),
                         LessonContentType = reader.GetString(2),
-                        CourseID = reader.GetString(3)
+                        CourseId = reader.GetString(3)
                     };
                     lessonsList.Add(lesson);
                 }
@@ -135,10 +135,10 @@ public class Lessons
                 {
                     lesson = new Lessons
                     {
-                        LessonID = reader.GetInt32(0),
+                        LessonId = reader.GetInt32(0),
                         LessonTitle = reader.GetString(1),
                         LessonContentType = reader.GetString(2),
-                        CourseID = reader.GetString(3)
+                        CourseId = reader.GetString(3)
                     };
                 }
                 reader.Dispose();

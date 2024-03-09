@@ -3,19 +3,21 @@ using Oracle.ManagedDataAccess.Client;
 using roider.Datas;
 using roider.Models;
 
+namespace roider.Models;
 public class QAs
 {
     public List<QAs> QAsList = [];
-    public int Qaid { get; set; }
-    public int StudentId { get; set; }
-    public string CourseID { get; set; }
-    public string Question { get; set; }
-    public string Answer { get; set; }
-    public DateTime FeedbackDate { get; set; }
-    public Students Student { get; set; }
-    public Courses Course { get; set; }
+    public int Qaid { get; init; }
+    public int StudentId { get; init; }
+    public string CourseId { get; init; }
+    public string Question { get; init; }
+    public string Answer { get; init; }
+    public DateTime FeedbackDate { get; init; }
     
-    public void AddQA(QAs qa)
+    public Students Student { get; init; }
+    public Courses Course { get; init; }
+    
+    public void AddQa(QAs qa)
     {
         try
         {
@@ -25,7 +27,7 @@ public class QAs
                 OracleCommand cmd = new OracleCommand(queryString, con);
                 cmd.Parameters.Add("Qaid", OracleDbType.Int32).Value = qa.Qaid;
                 cmd.Parameters.Add("StudentId", OracleDbType.Int32).Value = qa.StudentId;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = qa.CourseID;
+                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = qa.CourseId;
                 cmd.Parameters.Add("Question", OracleDbType.Varchar2).Value = qa.Question;
                 cmd.Parameters.Add("Answer", OracleDbType.Varchar2).Value = qa.Answer;
                 cmd.Parameters.Add("FeedbackDate", OracleDbType.Date).Value = qa.FeedbackDate;
@@ -40,7 +42,7 @@ public class QAs
             Console.WriteLine(ex.Message);
         }
     }
-    public void EditQA(QAs qa, int oldQaId)
+    public void EditQa(QAs qa, int oldQaId)
     {
         try
         {
@@ -49,7 +51,7 @@ public class QAs
                 string queryString = "UPDATE QAs SET StudentId = :StudentId, CourseID = :CourseID, Question = :Question, Answer = :Answer, FeedbackDate = :FeedbackDate WHERE Qaid = :OldQaid";
                 OracleCommand cmd = new OracleCommand(queryString, con);
                 cmd.Parameters.Add("StudentId", OracleDbType.Int32).Value = qa.StudentId;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = qa.CourseID;
+                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = qa.CourseId;
                 cmd.Parameters.Add("Question", OracleDbType.Varchar2).Value = qa.Question;
                 cmd.Parameters.Add("Answer", OracleDbType.Varchar2).Value = qa.Answer;
                 cmd.Parameters.Add("FeedbackDate", OracleDbType.Date).Value = qa.FeedbackDate;
@@ -66,7 +68,7 @@ public class QAs
         }
     }
 
-    public void DeleteQA(int qaId)
+    public void DeleteQa(int qaId)
     {
         try
         {
@@ -106,7 +108,7 @@ public class QAs
                     {
                         Qaid = reader.GetInt32(0),
                         StudentId = reader.GetInt32(1),
-                        CourseID = reader.GetString(2),
+                        CourseId = reader.GetString(2),
                         Question = reader.GetString(3),
                         Answer = reader.GetString(4),
                         FeedbackDate = reader.GetDateTime(5)
@@ -123,7 +125,7 @@ public class QAs
         }
         return qasList;
     }
-    public QAs FetchQAById(int qaId)
+    public QAs FetchQaById(int qaId)
     {
         QAs qa = null;
         try
@@ -144,7 +146,7 @@ public class QAs
                     {
                         Qaid = reader.GetInt32(0),
                         StudentId = reader.GetInt32(1),
-                        CourseID = reader.GetString(2),
+                        CourseId = reader.GetString(2),
                         Question = reader.GetString(3),
                         Answer = reader.GetString(4),
                         FeedbackDate = reader.GetDateTime(5)

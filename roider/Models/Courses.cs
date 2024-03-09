@@ -7,8 +7,8 @@ namespace roider.Models;
 public class Courses
 {
     public List<Courses> CoursesList = [];
-    public string CourseID { get; set; }
-    public string CourseTitle { get; set; }
+    public string CourseId { get; init; }
+    public string CourseTitle { get; init; }
     public void AddCourse(Courses course)
     {
         try
@@ -17,7 +17,7 @@ public class Courses
             {
                 string queryString = "INSERT INTO Courses (CourseID, CourseTitle) VALUES (:CourseID, :CourseTitle)";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = course.CourseID;
+                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = course.CourseId;
                 cmd.Parameters.Add("CourseTitle", OracleDbType.Varchar2).Value = course.CourseTitle;
 
                 con.Open();
@@ -38,7 +38,7 @@ public class Courses
             {
                 string queryString = "UPDATE Courses SET CourseID = :NewCourseID, CourseTitle = :CourseTitle WHERE CourseID = :OldCourseID";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("NewCourseID", OracleDbType.Varchar2).Value = course.CourseID;
+                cmd.Parameters.Add("NewCourseID", OracleDbType.Varchar2).Value = course.CourseId;
                 cmd.Parameters.Add("CourseTitle", OracleDbType.Varchar2).Value = course.CourseTitle;
                 cmd.Parameters.Add("OldCourseID", OracleDbType.Varchar2).Value = oldCourseId;
 
@@ -91,7 +91,7 @@ public class Courses
                 {
                     Courses course = new Courses
                     {
-                        CourseID = reader.GetString(0),
+                        CourseId = reader.GetString(0),
                         CourseTitle = reader.GetString(1)
                     };
                     coursesList.Add(course);
@@ -125,7 +125,7 @@ public class Courses
                 {
                     course = new Courses
                     {
-                        CourseID = reader.GetString(0),
+                        CourseId = reader.GetString(0),
                         CourseTitle = reader.GetString(1)
                     };
                 }
