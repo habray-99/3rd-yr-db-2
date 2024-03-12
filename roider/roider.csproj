@@ -43,10 +43,11 @@
       <_ContentIncludedByDefault Remove="Pages\Enrollments\Details.cshtml" />
       <_ContentIncludedByDefault Remove="Pages\Enrollments\Edit.cshtml" />
       <_ContentIncludedByDefault Remove="Pages\Enrollments\Index.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Pages\" />
+      <_ContentIncludedByDefault Remove="Views\Enrollments\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Enrollments\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Enrollments\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Enrollments\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Enrollments\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -75,6 +76,10 @@
       <UpToDateCheckInput Remove="Pages\Students\Details.cshtml" />
       <UpToDateCheckInput Remove="Pages\Students\Edit.cshtml" />
       <UpToDateCheckInput Remove="Pages\Students\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Pages\" />
     </ItemGroup>
 
 </Project>
