@@ -1,36 +1,37 @@
-﻿@model System.Collections.Generic.List<roider.Models.Enrollments>
+﻿@* @model System.Collections.Generic.List<roider.Models.Enrollments> *@
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "New Enrollment";
     Layout = "_Layout";
 }
+@model IEnumerable<roider.Models.Enrollments>
+
 <h2>Enrollments</h2>
 
 <a class="btn btn-success" asp-action="Create">Create Enrollment</a>
 <table class="table">
     <thead>
-        <tr>
-            <th>Enrollment ID</th>
-            <th>Student ID</th>
-            <th>Course ID</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
+    <tr>
+        <th>Enrollment ID</th>
+        <th>Student ID</th>
+        <th>Course ID</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var enrollment in Model)
-        {
-            <tr>
-                <td>@enrollment.EnrollmentId</td>
-                <td>@enrollment.StudentId</td>
-                <td>@enrollment.CourseId</td>
-                <td>@enrollment.EnrollDate</td>
-                <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@enrollment.EnrollmentId">Edit</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@enrollment.EnrollmentId">Delete</a>
-                </td>
-            </tr>
-        }
+    @foreach (var enrollment in Model)
+    {
+        <tr>
+            <td>@enrollment.EnrollmentId</td>
+            <td>@enrollment.StudentId</td>
+            <td>@enrollment.CourseId</td>
+            <td>@enrollment.EnrollDate</td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@enrollment.EnrollmentId">Edit</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@enrollment.EnrollmentId">Delete</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
-

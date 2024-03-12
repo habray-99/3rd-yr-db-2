@@ -1,44 +1,22 @@
 ﻿@model roider.Models.Enrollments
 
-@{
-    ViewBag.Title = "Enrollment Details";
-    Layout = "_Layout";
-}
-
 <h2>Enrollment Details</h2>
 
 <div>
-    <h4>Enrollments</h4>
+    <h4>Enrollment</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EnrollmentId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EnrollmentId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StudentId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>
-        <dt class="col-sm-10">
-            @Html.DisplayNameFor(model => model.EnrollDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EnrollDate)
-        </dd>
+        <dt class="col-sm-2">Enrollment ID</dt>
+        <dd class="col-sm-10">@Model.EnrollmentId</dd>
+        <dt class="col-sm-2">Student ID</dt>
+        <dd class="col-sm-10">@Model.StudentId</dd>
+        <dt class="col-sm-2">Course ID</dt>
+        <dd class="col-sm-10">@Model.CourseId</dd>
+        <dt class="col-sm-2">Enroll Date</dt>
+        <dd class="col-sm-10">@Model.EnrollDate.ToShortDateString()</dd>
     </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.EnrollmentId">Edit</a> |
-    <a asp-action="Delete" asp-route-id="@Model.EnrollmentId">Delete</a> |
     <a asp-action="Index">Back to List</a>
 </div>
