@@ -14,8 +14,8 @@ public class QAs
     public string Answer { get; init; }
     public DateTime FeedbackDate { get; init; }
     
-    public Students Student { get; init; }
-    public Courses Course { get; init; }
+    public Students? Student { get; set; }
+    public Courses? Course { get; set; }
     
     public void AddQa(QAs qa)
     {

@@ -13,8 +13,8 @@ public class Progresses
     public string LessonStatus { get; init; }
     public DateTime LastAccessedDate { get; init; }
 
-    public Students Student { get; init; }
-    public Lessons Lesson { get; init; }
+    public Students? Student { get; set; }
+    public Lessons? Lesson { get; set; }
     
     public void AddProgress(Progresses progress)
     {

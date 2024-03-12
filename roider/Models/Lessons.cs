@@ -13,7 +13,7 @@ public class Lessons
 
     public string CourseId { get; init; }
 
-    public Courses Course { get; init; }
+    public Courses? Course { get; set; }
     
     public void AddLesson(Lessons lesson)
     {
@@ -50,7 +50,7 @@ public class Lessons
                 cmd.Parameters.Add("LessonContentType", OracleDbType.Varchar2).Value = lesson.LessonContentType;
                 cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = lesson.CourseId;
                 cmd.Parameters.Add("OldLessonID", OracleDbType.Int32).Value = oldLessonId;
-
+                System.Diagnostics.Debug.WriteLine("lesson: " + lesson.ToString());
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();

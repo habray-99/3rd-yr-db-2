@@ -13,7 +13,7 @@ namespace roider.Controllers
         // GET: Enrollments
         public IActionResult Index()
         {
-            List<Enrollments> enrollmentsList = _enrollmentsModel.FetchEnrollments();
+            List<Enrollments> enrollmentsList = _enrollmentsModel.GetEnrollments();
             return View(enrollmentsList);
         }
 
@@ -28,6 +28,17 @@ namespace roider.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Enrollments enrollment)
         {
+            Console.WriteLine(ModelState.IsValid);
+            if (!ModelState.IsValid)
+            {
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 _enrollmentsModel.AddEnrollment(enrollment);
@@ -44,7 +55,7 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var enrollment = _enrollmentsModel.FetchEnrollmentById(id);
+            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id).Find(e => e.EnrollmentId == id);
             if (enrollment == null)
             {
                 return NotFound();
@@ -78,7 +89,7 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var enrollment = _enrollmentsModel.FetchEnrollmentById(id);
+            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id).Find(e => e.EnrollmentId == id);
             if (enrollment == null)
             {
                 return NotFound();
@@ -88,7 +99,7 @@ namespace roider.Controllers
         }
 
         // POST: Enrollments/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
@@ -104,12 +115,8 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var enrollment = _enrollmentsModel.FetchEnrollmentById(id);
-            if (enrollment == null)
-            {
-                return NotFound();
-            }
-
+            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id).Find(e => e.EnrollmentId == id);
+            if (enrollment == null) { return NotFound(); }
             return View(enrollment);
         }
     }

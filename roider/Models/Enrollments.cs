@@ -8,26 +8,64 @@ public class Enrollments
 {
     public int EnrollmentId { get; init; }
     public int StudentId { get; init; }
-    public string CourseId { get; init; }
-    public DateTime EnrollDate { get; init; }
+    public string? CourseId { get; init; }
+    public DateTime EnrollDate { get; set; }
 
 
     public List<Enrollments> EnrollmentsList = [];
-    public Students Student { get; init; }
-    public Courses Course { get; init; }
-    
+    public Students? Student { get; set; }
+    public Courses? Course { get; set; }
+
+    public List<Enrollments> GetEnrollments()
+    {
+        try
+        {
+            using var con = new OracleConnection(ValuesConstants.DbString);
+            const string queryString =
+                "SELECT EnrollmentId, StudentId, CourseId, EnrollDate FROM Enrollment";
+            var cmd = new OracleCommand(queryString, con);
+            cmd.BindByName = true;
+            cmd.CommandType = CommandType.Text;
+
+            con.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var enrollment = new Enrollments
+                {
+                    EnrollmentId = reader.GetInt32(0),
+                    StudentId = reader.GetInt32(1),
+                    CourseId = reader.IsDBNull(2) ? null : reader.GetString(2),
+                    EnrollDate = reader.GetDateTime(3)
+                };
+                EnrollmentsList.Add(enrollment);
+            }
+
+            reader.Dispose();
+            con.Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        return EnrollmentsList;
+    }
+
+    // Method to add a new enrollment
     public void AddEnrollment(Enrollments enrollment)
     {
         try
         {
-            using (OracleConnection con = new OracleConnection(ValuesConstants.DbString))
+            using (var con = new OracleConnection(ValuesConstants.DbString))
             {
-                string queryString = "INSERT INTO Enrollments (EnrollmentID, StudentID, CourseID, EnrollDate) VALUES (:EnrollmentID, :StudentID, :CourseID, :EnrollDate)";
-                OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("EnrollmentID", OracleDbType.Int32).Value = enrollment.EnrollmentId;
-                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = enrollment.StudentId;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = enrollment.CourseId;
-                cmd.Parameters.Add("EnrollDate", OracleDbType.Date).Value = enrollment.EnrollDate;
+                const string queryString =
+                    "INSERT INTO Enrollment (StudentId, CourseId, EnrollDate) VALUES (:StudentId, :CourseId, :EnrollDate)";
+                var cmd = new OracleCommand(queryString, con);
+                cmd.Parameters.Add("StudentId", OracleDbType.Int32).Value = enrollment.StudentId;
+                cmd.Parameters.Add("CourseId", OracleDbType.Varchar2).Value = enrollment.CourseId;
+                var enrollDate = DateTime.Now; // Example date
+                var formattedDate = enrollDate.ToString("dd-MMM-yy");
+                cmd.Parameters.Add("EnrollDate", OracleDbType.Date).Value = enrollment.EnrollDate; //enrollment.EnrollDate;
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -40,16 +78,17 @@ public class Enrollments
         }
     }
 
+    // Method to edit an existing enrollment
     public void EditEnrollment(Enrollments enrollment, int oldEnrollmentId)
     {
         try
         {
             using (OracleConnection con = new OracleConnection(ValuesConstants.DbString))
             {
-                string queryString = "UPDATE Enrollments SET StudentID = :StudentID, CourseID = :CourseID, EnrollDate = :EnrollDate WHERE EnrollmentID = :OldEnrollmentID";
+                string queryString = "UPDATE Enrollment SET StudentId = :StudentId, CourseId = :CourseId, EnrollDate = :EnrollDate WHERE EnrollmentId = :OldEnrollmentID";
                 OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("StudentID", OracleDbType.Int32).Value = enrollment.StudentId;
-                cmd.Parameters.Add("CourseID", OracleDbType.Varchar2).Value = enrollment.CourseId;
+                cmd.Parameters.Add("StudentId", OracleDbType.Int32).Value = enrollment.StudentId;
+                cmd.Parameters.Add("CourseId", OracleDbType.Varchar2).Value = enrollment.CourseId;
                 cmd.Parameters.Add("EnrollDate", OracleDbType.Date).Value = enrollment.EnrollDate;
                 cmd.Parameters.Add("OldEnrollmentID", OracleDbType.Int32).Value = oldEnrollmentId;
 
@@ -64,15 +103,16 @@ public class Enrollments
         }
     }
 
+    // Method to delete an enrollment
     public void DeleteEnrollment(int enrollmentId)
     {
         try
         {
-            using (OracleConnection con = new OracleConnection(ValuesConstants.DbString))
+            using (var con = new OracleConnection(ValuesConstants.DbString))
             {
-                string queryString = "DELETE FROM Enrollments WHERE EnrollmentID = :EnrollmentID";
-                OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("EnrollmentID", OracleDbType.Int32).Value = enrollmentId;
+                var queryString = "DELETE FROM Enrollment WHERE EnrollmentId = :EnrollmentId";
+                var cmd = new OracleCommand(queryString, con);
+                cmd.Parameters.Add("EnrollmentId", OracleDbType.Int32).Value = enrollmentId;
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -84,15 +124,18 @@ public class Enrollments
             Console.WriteLine(ex.Message);
         }
     }
-    public List<Enrollments> FetchEnrollments()
+
+    // Method to fetch enrollments by student ID
+    public List<Enrollments> FetchEnrollmentsByStudentId(int studentId)
     {
-        List<Enrollments> enrollmentsList = new List<Enrollments>();
+        List<Enrollments> enrollmentsList = [];
         try
         {
             using (OracleConnection con = new OracleConnection(ValuesConstants.DbString))
             {
-                string queryString = "SELECT EnrollmentID, StudentID, CourseID, EnrollDate FROM Enrollment";
+                string queryString = "SELECT EnrollmentId, StudentId, CourseId, EnrollDate FROM Enrollment WHERE StudentId = :StudentId";
                 OracleCommand cmd = new OracleCommand(queryString, con);
+                cmd.Parameters.Add("StudentId", OracleDbType.Int32).Value = studentId;
                 cmd.BindByName = true;
                 cmd.CommandType = CommandType.Text;
 
@@ -104,7 +147,7 @@ public class Enrollments
                     {
                         EnrollmentId = reader.GetInt32(0),
                         StudentId = reader.GetInt32(1),
-                        CourseId = reader.GetString(2),
+                        CourseId = reader.IsDBNull(2) ? null : reader.GetString(2),
                         EnrollDate = reader.GetDateTime(3)
                     };
                     enrollmentsList.Add(enrollment);
@@ -119,40 +162,4 @@ public class Enrollments
         }
         return enrollmentsList;
     }
-    public Enrollments FetchEnrollmentById(int enrollmentId)
-    {
-        Enrollments enrollment = null;
-        try
-        {
-            using (OracleConnection con = new OracleConnection(ValuesConstants.DbString))
-            {
-                string queryString = "SELECT EnrollmentID, StudentID, CourseID, EnrollDate FROM Enrollments WHERE EnrollmentID = :EnrollmentID";
-                OracleCommand cmd = new OracleCommand(queryString, con);
-                cmd.Parameters.Add("EnrollmentID", OracleDbType.Int32).Value = enrollmentId;
-                cmd.BindByName = true;
-                cmd.CommandType = CommandType.Text;
-
-                con.Open();
-                OracleDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    enrollment = new Enrollments
-                    {
-                        EnrollmentId = reader.GetInt32(0),
-                        StudentId = reader.GetInt32(1),
-                        CourseId = reader.GetString(2),
-                        EnrollDate = reader.GetDateTime(3)
-                    };
-                }
-                reader.Dispose();
-                con.Close();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        return enrollment;
-    }
-
 }
