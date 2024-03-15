@@ -13,13 +13,15 @@ namespace roider.Controllers
         // GET: Progresses
         public IActionResult Index()
         {
-            List<Progresses> progressesList = _progressesModel.FetchProgresses();
+            Task<List<Progresses>> progressesList = _progressesModel.FetchProgressesAsync();
             return View(progressesList);
         }
 
         // GET: Progresses/Create
         public IActionResult Create()
         {
+            var students = new Students().GetStudents();
+            ViewBag.StudentsList = students;
             return View();
         }
 
@@ -30,7 +32,7 @@ namespace roider.Controllers
         {
             if (ModelState.IsValid)
             {
-                _progressesModel.AddProgress(progress);
+                _progressesModel.AddProgressAsync(progress);
                 return RedirectToAction(nameof(Index));
             }
             return View(progress);
@@ -64,7 +66,7 @@ namespace roider.Controllers
 
             if (ModelState.IsValid)
             {
-                _progressesModel.EditProgress(progress, id);
+                _progressesModel.EditProgressAsync(progress, id);
                 return RedirectToAction(nameof(Index));
             }
             return View(progress);
