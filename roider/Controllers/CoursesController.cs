@@ -20,6 +20,8 @@ namespace roider.Controllers
         // GET: Courses/Create
         public IActionResult Create()
         {
+            var instructors = new Instructors().FetchInstructors();
+            ViewBag.InstructorList = instructors;
             return View();
         }
 
@@ -46,6 +48,8 @@ namespace roider.Controllers
             {
                 return NotFound();
             }
+            var instructors = new Instructors().FetchInstructors();
+            ViewBag.InstructorList = instructors;
             return View(course);
         }
         //
@@ -94,20 +98,37 @@ namespace roider.Controllers
         }
 
         // GET: Courses/Details/5
+        // public IActionResult Details(string id)
+        // {
+        //     if (id == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //
+        //     var course = _coursesModel.FetchCourseById(id);
+        //     if (course == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //
+        //     return View(course);
+        // }
         public IActionResult Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-        
-            var course = _coursesModel.FetchCourseById(id);
+
+            var course = _coursesModel.FetchCourseDetailsAndInstructors(id);
             if (course == null)
             {
                 return NotFound();
             }
-        
+            var lessons = new Lessons().FetchLessonsByCourse(id);
+            ViewBag.LessonList = lessons;
             return View(course);
         }
+
     }
 }
