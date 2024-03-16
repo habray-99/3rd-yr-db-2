@@ -20,6 +20,10 @@ namespace roider.Controllers
         // GET: Enrollments/Create
         public IActionResult Create()
         {
+            var courses = new Courses().FetchCourses();
+            ViewBag.CoursesList = courses;
+            var students = new Students().GetStudents();
+            ViewBag.StudentsList = students;
             return View();
         }
 
@@ -55,11 +59,16 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id).Find(e => e.EnrollmentId == id);
+            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id);
             if (enrollment == null)
             {
                 return NotFound();
             }
+            var courses = new Courses().FetchCourses();
+            ViewBag.CoursesList = courses;
+            var students = new Students().GetStudents();
+            ViewBag.StudentsList = students;
+            // return View();
             return View(enrollment);
         }
 
@@ -89,7 +98,7 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id).Find(e => e.EnrollmentId == id);
+            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id);
             if (enrollment == null)
             {
                 return NotFound();
@@ -99,7 +108,7 @@ namespace roider.Controllers
         }
 
         // POST: Enrollments/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
@@ -115,8 +124,12 @@ namespace roider.Controllers
                 return NotFound();
             }
 
-            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id).Find(e => e.EnrollmentId == id);
-            if (enrollment == null) { return NotFound(); }
+            var enrollment = _enrollmentsModel.FetchEnrollmentsByStudentId(id);
+            if (enrollment == null)
+            {
+                return NotFound();
+            }
+
             return View(enrollment);
         }
     }
