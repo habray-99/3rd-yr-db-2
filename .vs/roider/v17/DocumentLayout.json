@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C-projects\\roider\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|d:\\c-projects\\roider\\roider\\models\\progresses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|solutionrelative:roider\\models\\progresses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|d:\\c-projects\\roider\\roider\\controllers\\progressescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|solutionrelative:roider\\controllers\\progressescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Progresses.cs",
+              "DocumentMoniker": "D:\\C-projects\\roider\\roider\\Models\\Progresses.cs",
+              "RelativeDocumentMoniker": "roider\\Models\\Progresses.cs",
+              "ToolTip": "D:\\C-projects\\roider\\roider\\Models\\Progresses.cs",
+              "RelativeToolTip": "roider\\Models\\Progresses.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAwwBcAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-15T03:26:15.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProgressesController.cs",
+              "DocumentMoniker": "D:\\C-projects\\roider\\roider\\Controllers\\ProgressesController.cs",
+              "RelativeDocumentMoniker": "roider\\Controllers\\ProgressesController.cs",
+              "ToolTip": "D:\\C-projects\\roider\\roider\\Controllers\\ProgressesController.cs",
+              "RelativeToolTip": "roider\\Controllers\\ProgressesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-15T03:26:13.885Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
