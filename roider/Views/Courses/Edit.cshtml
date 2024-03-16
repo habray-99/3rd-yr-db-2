@@ -6,20 +6,29 @@
 }
 
 <form asp-action="Edit">
-    <input type="hidden" asp-for="CourseId" />
+    <input type="hidden" asp-for="CourseId"/>
     <div class="form-group">
         <label asp-for="CourseId" class="control-label"></label>
-        <input asp-for="CourseId" class="form-control" />
+        <input asp-for="CourseId" class="form-control"/>
         <span asp-validation-for="CourseId" class="text-danger"></span>
     </div>
-    
+
     <div class="form-group">
         <label asp-for="CourseTitle" class="control-label"></label>
-        <input asp-for="CourseTitle" class="form-control" />
+        <input asp-for="CourseTitle" class="form-control"/>
         <span asp-validation-for="CourseTitle" class="text-danger"></span>
     </div>
-    
     <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="CourseTeacher" class="control-label"></label>
+                <select asp-for="CourseTeacher" class="form-control">
+                    @foreach (var instructor in ViewBag.InstructorList)
+                    {
+                        <option value="@instructor.InstructorId">@($"{instructor.InstructorId} - {instructor.InstructorName}")</option>
+                    }
+                </select>
+                <span asp-validation-for="CourseTeacher" class="text-danger"></span>
+            </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary"/>
     </div>
 </form>
