@@ -10,6 +10,7 @@
             @foreach (var student in ViewBag.StudentsList)
             {
                 @* <option value="@student.StudentId" @(Model.StudentId == student.StudentId ? "selected" : "")>@($"{student.StudentId} - {student.StudentName}")</option> *@
+                <option value="@student.StudentId">@($"{student.StudentId} - {student.StudentName}")</option>
             }
         </select>
         <span asp-validation-for="StudentId" class="text-danger"></span>
@@ -21,6 +22,7 @@
             @foreach (var course in ViewBag.CoursesList)
             {
                 @* <option value="@course.CourseId" @(Model.CourseId == course.CourseId ? "selected" : "")>@($"{course.CourseId} - {course.CourseTitle}")</option> *@
+                <option value="@course.CourseId">@($"{course.CourseId} - {course.CourseTitle}")</option>
             }
         </select>
         <span asp-validation-for="CourseId" class="text-danger"></span>
@@ -35,3 +37,10 @@
         <input type="submit" value="Save" class="btn btn-primary" />
     </div>
 </form>
+
+<div class="btn-group" role="group">
+    @* <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.EnrollmentId">Edit</a> *@
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.EnrollmentId">Delete</a>
+    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.EnrollmentId">Details</a>
+    <a class="btn btn-outline-dark" asp-action="Index">Back</a>
+</div>

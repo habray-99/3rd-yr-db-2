@@ -19,6 +19,12 @@
 
     <form asp-action="Delete" asp-route-id="@Model.EnrollmentId">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
     </form>
+</div>
+
+<div class="btn-group" role="group">
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.EnrollmentId">Edit</a>
+    @* <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.EnrollmentId">Delete</a> *@
+    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.EnrollmentId">Details</a>
+    <a class="btn btn-outline-dark" asp-action="Index">Back</a>
 </div>

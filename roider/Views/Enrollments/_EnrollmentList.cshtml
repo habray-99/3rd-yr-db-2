@@ -4,35 +4,35 @@
     ViewBag.Title = "New Enrollment";
     Layout = "_Layout";
 }
-
-<h2>Enrollments</h2>
-
-<a class="btn btn-success" asp-action="Create">Create Enrollment</a>
-
-<!-- Search Box -->
-<div class="input-group mb-3 p-2">
-    <input type="text" class="form-control" id="searchInput" placeholder="Search enrollments">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
-    </div>
-</div>
+@* *@
+@* <h2>Enrollments</h2> *@
+@* *@
+@* <a class="btn btn-success" asp-action="Create">Create Enrollment</a> *@
+@* *@
+@* <!-- Search Box --> *@
+@* <div class="input-group mb-3"> *@
+@*     <input type="text" class="form-control" id="searchInput" placeholder="Search enrollments"> *@
+@*     <div class="input-group-append"> *@
+@*         <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button> *@
+@*     </div> *@
+@* </div> *@
 
 <table class="table" id="enrollmentsTable">
-    <thead>
-    <tr>
-        <th>Enrollment ID</th>
-        <th>Student Name</th>
-        <th>Course Name</th>
-        <th>Date</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
+    @* <thead> *@
+    @* <tr> *@
+    @*     <th>Enrollment ID</th> *@
+    @*     <th>Student Name</th> *@
+    @*     <th>Course Name</th> *@
+    @*     <th>Date</th> *@
+    @*     <th>Actions</th> *@
+    @* </tr> *@
+    @* </thead> *@
     <tbody>
     @foreach (var enrollment in Model)
     {
         <tr>
             <td>@enrollment.EnrollmentId</td>
-            <td>@enrollment.Student?.StudentName</td>
+            <td>@enrollment.Student.StudentName</td>
             <td>@enrollment.Course.CourseTitle</td>
             <td>@enrollment.EnrollDate.ToString("d")</td>
             <td>
