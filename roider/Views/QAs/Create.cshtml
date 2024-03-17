@@ -9,15 +9,26 @@
 
 <form asp-action="Create">
     <div class="form-group">
-        <label asp-for="StudentId" class="control-label"></label>
-        <input asp-for="StudentId" class="form-control" />
-        <span asp-validation-for="StudentId" class="text-danger"></span>
-    </div>
+            <label asp-for="StudentId" class="control-label"></label>
+            <select asp-for="StudentId" class="form-control">
+                @foreach (var student in ViewBag.StudentsList)
+                {
+                    <option value="@student.StudentId">@($"{student.StudentId} - {student.StudentName}")</option>
+                }
+            </select>
+            <span asp-validation-for="StudentId" class="text-danger"></span>
+        </div>
     <div class="form-group">
-        <label asp-for="CourseId" class="control-label"></label>
-        <input asp-for="CourseId" class="form-control" />
-        <span asp-validation-for="CourseId" class="text-danger"></span>
-    </div>
+            <label asp-for="CourseId" class="control-label"></label>
+            <select asp-for="CourseId" class="form-control">
+                @foreach (var course in ViewBag.CoursesList)
+                {
+                    <option value="@course.CourseId">@($"{course.CourseId} - {course.CourseTitle}")</option>
+                }
+            </select>
+    
+            <span asp-validation-for="CourseId" class="text-danger"></span>
+        </div>
     <div class="form-group">
         <label asp-for="Question" class="control-label"></label>
         <input asp-for="Question" class="form-control" />

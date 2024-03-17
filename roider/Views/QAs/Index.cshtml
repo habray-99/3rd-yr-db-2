@@ -1,19 +1,27 @@
 ﻿@model System.Collections.Generic.List<QAs>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Q&A Records";
     Layout = "_Layout";
 }
 
 <h2>Q&A Records</h2>
 <a class="btn btn-success" asp-action="Create">Create Q&A Record</a>
 
-<table class="table">
+<!-- Search Box -->
+<div class="input-group mb-3 p-2">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search Q&A records">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+    </div>
+</div>
+
+<table class="table" id="qasTable">
     <thead>
         <tr>
             <th>QA ID</th>
-            <th>Student ID</th>
-            <th>Course ID</th>
+            <th>Student Name</th>
+            <th>Course Name</th>
             <th>Question</th>
             <th>Answer</th>
             <th>Feedback Date</th>
@@ -25,17 +33,33 @@
         {
             <tr>
                 <td>@qa.Qaid</td>
-                <td>@qa.StudentId</td>
-                <td>@qa.CourseId</td>
+                <td>@qa.Student.StudentName</td>
+                <td>@qa.Course.CourseTitle</td>
                 <td>@qa.Question</td>
                 <td>@qa.Answer</td>
                 <td>@qa.FeedbackDate.ToString("d")</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@qa.Qaid">Edit</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@qa.Qaid">Delete</a>
+                    <div class="btn-group" role="group">
+                                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@qa.Qaid">Edit</a>
+                                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@qa.Qaid">Delete</a>
+                                        <a class="btn btn-secondary" asp-action="Details" asp-route-id="@qa.Qaid">Details</a>
+                                    </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+<script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+        const searchInput = document.getElementById('searchInput').value;
+        const tableBody = document.querySelector('#qasTable tbody');
+
+        fetch(`/QAs/SearchQAs?searchTerm=${encodeURIComponent(searchInput)}`)
+            .then(response => response.text())
+            .then(html => {
+                tableBody.innerHTML = html;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
