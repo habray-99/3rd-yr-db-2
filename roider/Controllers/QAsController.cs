@@ -20,6 +20,10 @@ namespace roider.Controllers
         // GET: QAs/Create
         public IActionResult Create()
         {
+            var courses = new Courses().FetchCourses();
+            ViewBag.CoursesList = courses;
+            var students = new Students().GetStudents();
+            ViewBag.StudentsList = students;
             return View();
         }
 
@@ -49,6 +53,10 @@ namespace roider.Controllers
             {
                 return NotFound();
             }
+            var courses = new Courses().FetchCourses();
+            ViewBag.CoursesList = courses;
+            var students = new Students().GetStudents();
+            ViewBag.StudentsList = students;
             return View(qa);
         }
 
@@ -112,5 +120,22 @@ namespace roider.Controllers
 
             return View(qa);
         }
+        public async Task<IActionResult> SearchQAs(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return NotFound();
+            }
+
+            var qas = await _qasModel.SearchQAsAsync(searchTerm);
+
+            if (qas == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView("_QAsList", qas);
+        }
+
     }
 }
