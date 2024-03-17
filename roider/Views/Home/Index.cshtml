@@ -1,81 +1,41 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<roider.Models.Courses>
+
+@{
+    ViewBag.Title = "Top 3 Courses by Enrollment";
+    Layout = "_Layout";
 }
 
-<div class="text-center" style="height:auto;  overflow: hidden; ">
-@*     <h1 class="display-4">Welcome</h1> *@
-@*     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Top 3 Courses by Enrollment</h2>
 
+    <!-- Date Picker Form -->
+    <form asp-action="Index" method="get" class="text-center">
+        <div class="form-group m-1">
+            <label for="date" class="mr-2">Select Month and Year:</label>
+            <input type="month" id="date" name="date" class="form-control m-2 p-2">
+        </div>
+        <button type="submit" class="btn btn-primary m-2">Submit</button>
+    </form>
 
-    <div class="card text-bg-primary mb-3" style="max-width: 18rem;height:auto ">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h5 class="card-title">Primary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+    @if (ViewBag.SelectedDate != null)
+    {
+        <h3 class="text-center mt-4">Top 3 Courses by Enrollment for @ViewBag.SelectedDate.ToString("MMMM yyyy")</h3>
+    }
+
+    <div class="row mt-4">
+        @foreach (var course in Model)
+        {
+            <div class="col-md-4">
+                <a href="@Url.Action("Details", "Courses", new { id = course.CourseId })" class="text-decoration-none">
+                    <div class="card mb-4 shadow">
+                        <img src="~/images/course-placeholder.jpg" class="card-img-top" alt="Course Image">
+                        <div class="card-body">
+                            <h5 class="card-title">@course.CourseTitle</h5>
+                            <p class="card-text">Enrollment Count: @course.EnrollmentCount</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
     </div>
-    <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h5 class="card-title">Success card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h5 class="card-title">Success card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h5 class="card-title">Success card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    
 </div>
-    @* <div class="card text-bg-danger mb-3" style="max-width: 18rem;"> *@
-    @*     <div class="card-header">Header</div> *@
-    @*     <div class="card-body"> *@
-    @*         <h5 class="card-title">Danger card title</h5> *@
-    @*         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> *@
-    @*     </div> *@
-    @* </div> *@
-    @* <div class="card text-bg-warning mb-3" style="max-width: 18rem;"> *@
-    @*     <div class="card-header">Header</div> *@
-    @*     <div class="card-body"> *@
-    @*         <h5 class="card-title">Warning card title</h5> *@
-    @*         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> *@
-    @*     </div> *@
-    @* </div> *@
-    @* <div class="card text-bg-info mb-3" style="max-width: 18rem;"> *@
-    @*     <div class="card-header">Header</div> *@
-    @*     <div class="card-body"> *@
-    @*         <h5 class="card-title">Info card title</h5> *@
-    @*         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> *@
-    @*     </div> *@
-    @* </div> *@
-    @* <div class="card text-bg-light mb-3" style="max-width: 18rem;"> *@
-    @*     <div class="card-header">Header</div> *@
-    @*     <div class="card-body"> *@
-    @*         <h5 class="card-title">Light card title</h5> *@
-    @*         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> *@
-    @*     </div> *@
-    @* </div> *@
-    @* <div class="card text-bg-dark mb-3" style="max-width: 18rem;"> *@
-    @*     <div class="card-header">Header</div> *@
-    @*     <div class="card-body"> *@
-    @*         <h5 class="card-title">Dark card title</h5> *@
-    @*         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> *@
-    @*     </div> *@
-    @* </div> *@
