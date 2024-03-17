@@ -1,0 +1,58 @@
+﻿@model System.Collections.Generic.List<roider.Models.Lessons>
+
+@{
+    ViewBag.Title = "Lessons";
+    Layout = "_Layout";
+}
+
+@* <h2>Lessons</h2> *@
+@* <a class="btn btn-success" asp-action="Create">Create Lesson</a> *@
+@* *@
+@* <!-- Search Box --> *@
+@* <div class="input-group mb-3"> *@
+@*     <input type="text" class="form-control" id="searchInput" placeholder="Search lessons"> *@
+@*     <div class="input-group-append"> *@
+@*         <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button> *@
+@*     </div> *@
+@* </div> *@
+
+<table class="table" id="lessonsTable">
+    @* <thead> *@
+    @*     <tr> *@
+    @*         <th>Lesson ID</th> *@
+    @*         <th>Lesson Title</th> *@
+    @*         <th>Content Type</th> *@
+    @*         <th>Course ID</th> *@
+    @*         <th>Actions</th> *@
+    @*     </tr> *@
+    @* </thead> *@
+    <tbody>
+        @foreach (var lesson in Model)
+        {
+            <tr>
+                <td>@lesson.LessonId</td>
+                <td>@lesson.LessonTitle</td>
+                <td>@lesson.LessonContentType</td>
+                <td>@lesson.CourseId</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@lesson.LessonId">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@lesson.LessonId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+        const searchInput = document.getElementById('searchInput').value;
+        const tableBody = document.querySelector('#lessonsTable tbody');
+
+        fetch(`/Lessons/SearchLessons?searchTerm=${encodeURIComponent(searchInput)}`)
+            .then(response => response.text())
+            .then(html => {
+                tableBody.innerHTML = html;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
