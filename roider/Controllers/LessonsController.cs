@@ -20,6 +20,8 @@ namespace roider.Controllers
         // GET: Lessons/Create
         public IActionResult Create()
         {
+            var courses = new Courses().FetchCourses();
+            ViewBag.CoursesList = courses;
             return View();
         }
 
@@ -49,6 +51,9 @@ namespace roider.Controllers
             {
                 return NotFound();
             }
+            var courses = new Courses().FetchCourses();
+            ViewBag.CoursesList = courses;
+            
             return View(lesson);
         }
 
@@ -112,5 +117,22 @@ namespace roider.Controllers
 
             return View(lesson);
         }
+        public async Task<IActionResult> SearchLessons(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return NotFound();
+            }
+
+            var lessons = await _lessonsModel.SearchLessonsAsync(searchTerm);
+
+            if (lessons == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView("_LessonList", lessons);
+        }
+
     }
 }
