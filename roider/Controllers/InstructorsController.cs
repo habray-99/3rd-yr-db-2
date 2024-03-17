@@ -37,9 +37,9 @@ namespace roider.Controllers
         }
 
         // GET: Instructors/Edit/5
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
-            if (id == 0)
+            if (id == null) // Corrected condition
             {
                 return NotFound();
             }
@@ -55,25 +55,22 @@ namespace roider.Controllers
         // POST: Instructors/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Instructors instructor)
+        public IActionResult Edit(string id, Instructors instructor)
         {
             if (id != instructor.InstructorId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                _instructorsModel.EditInstructor(instructor, id);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(instructor);
+            if (!ModelState.IsValid) return View(instructor);
+            _instructorsModel.EditInstructor(instructor, id);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Instructors/Delete/5
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
-            if (id == 0)
+            if (id == null) // Corrected condition
             {
                 return NotFound();
             }
@@ -90,16 +87,16 @@ namespace roider.Controllers
         // POST: Instructors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(string id)
         {
             _instructorsModel.DeleteInstructor(id);
             return RedirectToAction(nameof(Index));
         }
 
         // GET: Instructors/Details/5
-        public IActionResult Details(int id)
+        public IActionResult Details(string? id)
         {
-            if (id == 0)
+            if (id == null) // Corrected condition
             {
                 return NotFound();
             }
@@ -112,5 +109,23 @@ namespace roider.Controllers
 
             return View(instructor);
         }
+    public async Task<IActionResult> SearchInstructors(string searchTerm)
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            return NotFound();
+        }
+
+        var instructors = await _instructorsModel.SearchInstructorsAsync(searchTerm);
+
+        if (instructors == null)
+        {
+            return NotFound();
+        }
+
+        return PartialView("_InstructorList", instructors);
     }
+    }
+
+
 }
