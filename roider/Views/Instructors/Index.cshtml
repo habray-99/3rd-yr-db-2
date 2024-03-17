@@ -1,13 +1,23 @@
 ﻿@model System.Collections.Generic.List<roider.Models.Instructors>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Instructors";
     Layout = "_Layout";
 }
+
 <h2>Instructors</h2>
 
 <a class="btn btn-success" asp-action="Create">Create Instructor</a>
-<table class="table">
+
+<!-- Search Box -->
+<div class="input-group mb-3 p-2">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search instructors">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+    </div>
+</div>
+
+<table class="table" id="instructorsTable">
     <thead>
         <tr>
             <th>Instructor ID</th>
@@ -32,11 +42,27 @@
                 <td>@instructor.YearsOfExperience</td>
                 <td>@instructor.Country</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@instructor.InstructorId">Edit</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@instructor.InstructorId">Delete</a>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@instructor.InstructorId">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@instructor.InstructorId">Delete</a>
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@instructor.InstructorId">Detail</a>
+                    </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+<script>
+document.getElementById('searchButton').addEventListener('click', function() {
+    const searchInput = document.getElementById('searchInput').value;
+    const tableBody = document.querySelector('#instructorsTable tbody');
+
+    fetch(`/Instructors/SearchInstructors?searchTerm=${encodeURIComponent(searchInput)}`)
+        .then(response => response.text())
+        .then(html => {
+            tableBody.innerHTML = html;
+        })
+        .catch(error => console.error('Error:', error));
+});
+</script>
