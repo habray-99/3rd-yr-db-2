@@ -19,16 +19,23 @@
         <span asp-validation-for="CourseTitle" class="text-danger"></span>
     </div>
     <div class="form-group">
-                <label asp-for="CourseTeacher" class="control-label"></label>
-                <select asp-for="CourseTeacher" class="form-control">
-                    @foreach (var instructor in ViewBag.InstructorList)
-                    {
-                        <option value="@instructor.InstructorId">@($"{instructor.InstructorId} - {instructor.InstructorName}")</option>
-                    }
-                </select>
-                <span asp-validation-for="CourseTeacher" class="text-danger"></span>
-            </div>
+        <label asp-for="CourseTeacher" class="control-label"></label>
+        <select asp-for="CourseTeacher" class="form-control">
+            @foreach (var instructor in ViewBag.InstructorList)
+            {
+                <option value="@instructor.InstructorId">@($"{instructor.InstructorId} - {instructor.InstructorName}")</option>
+            }
+        </select>
+        <span asp-validation-for="CourseTeacher" class="text-danger"></span>
+    </div>
     <div class="form-group">
         <input type="submit" value="Save" class="btn btn-primary"/>
     </div>
 </form>
+
+<div class="btn-group" role="group">
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.CourseId">Edit</a>
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.CourseId">Delete</a>
+    @* <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.CourseId">Details</a> *@
+    <a class="btn btn-outline-dark" asp-action="Index">Back</a>
+</div>
