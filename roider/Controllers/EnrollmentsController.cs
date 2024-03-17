@@ -132,5 +132,22 @@ namespace roider.Controllers
 
             return View(enrollment);
         }
+        public async Task<IActionResult> SearchEnrollments(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return NotFound();
+            }
+
+            var enrollments = await _enrollmentsModel.SearchEnrollmentsAsync(searchTerm);
+
+            if (enrollments == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView("_EnrollmentList", enrollments);
+        }
+
     }
 }
