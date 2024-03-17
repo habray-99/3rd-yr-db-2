@@ -130,5 +130,24 @@ namespace roider.Controllers
             return View(course);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> SearchCourses(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return NotFound();
+            }
+
+            var courses = await _coursesModel.SearchCoursesAsync(searchTerm);
+
+            if (courses == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView("_CourseList", courses);
+        }
+
     }
+
 }
