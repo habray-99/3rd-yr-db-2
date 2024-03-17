@@ -1,33 +1,34 @@
 ﻿@model System.Collections.Generic.List<roider.Models.Students>
 
-@{
-    ViewBag.Title = "Students";
-    Layout = "_Layout";
-}
+@* @{ *@
+@*     ViewBag.Title = "Students"; *@
+@*     Layout = "_Layout"; *@
+@* } *@
 
-<h2>Students</h2>
-<a class="btn btn-success" asp-action="Create">Create Student</a>
+@* <h2>Students</h2> *@
+@* <a class="btn btn-success" asp-action="Create">Create Student</a> *@
 
 <!-- Search Box -->
-<div class="input-group mb-3 p-2">
-    <input type="text" class="form-control" id="searchInput" placeholder="Search students">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
-    </div>
-</div>
-
-<table class="table" id="studentsTable">
-    <thead>
-        <tr>
-            <th>Student ID</th>
-            <th>Student Name</th>
-            <th>Contact</th>
-            <th>Date of Birth</th>
-            <th>Email Address</th>
-            <th>Country</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+@* <div class="input-group mb-3"> *@
+@*     <input type="text" class="form-control" id="searchInput" placeholder="Search students"> *@
+@*     <div class="input-group-append"> *@
+@*         <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button> *@
+@*     </div> *@
+@* </div> *@
+@* *@
+@* <table class="table" id="studentsTable"> *@
+@*     <thead> *@
+@*         <tr> *@
+@*             <th>Student ID</th> *@
+@*             <th>Student Name</th> *@
+@*             <th>Contact</th> *@
+@*             <th>Date of Birth</th> *@
+@*             <th>Email Address</th> *@
+@*             <th>Country</th> *@
+@*             <th>Actions</th> *@
+@*         </tr> *@
+@*     </thead> *@
+<table>
     <tbody>
         @foreach (var student in Model)
         {

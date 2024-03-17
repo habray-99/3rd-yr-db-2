@@ -41,3 +41,10 @@
         <input type="submit" value="Save" class="btn btn-primary" />
     </div>
 </form>
+
+<div class="btn-group" role="group">
+    @* <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.StudentId">Edit</a> *@
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.StudentId">Delete</a>
+    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.StudentId">Details</a>
+    <a class="btn btn-outline-dark" asp-action="Index">Back</a>
+</div>
