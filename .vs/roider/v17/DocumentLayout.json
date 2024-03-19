@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\C-projects\\roider\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|d:\\c-projects\\roider\\roider\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|solutionrelative:roider\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|d:\\c-projects\\roider\\roider\\models\\courses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|solutionrelative:roider\\models\\courses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|d:\\c-projects\\roider\\roider\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|solutionrelative:roider\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|d:\\c-projects\\roider\\roider\\models\\progresses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4DE6E5EC-4AB2-4484-A9E8-E12521ED37A5}|roider\\roider.csproj|solutionrelative:roider\\models\\progresses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,24 +30,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Courses.cs",
+              "DocumentMoniker": "D:\\C-projects\\roider\\roider\\Models\\Courses.cs",
+              "RelativeDocumentMoniker": "roider\\Models\\Courses.cs",
+              "ToolTip": "D:\\C-projects\\roider\\roider\\Models\\Courses.cs",
+              "RelativeToolTip": "roider\\Models\\Courses.cs",
+              "ViewState": "AQIAADIBAAAAAAAAAAAMwD4BAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T02:39:45.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\C-projects\\roider\\roider\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "roider\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\C-projects\\roider\\roider\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "roider\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAA3wCMAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T02:37:50.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\C-projects\\roider\\roider\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "roider\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\C-projects\\roider\\roider\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "roider\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-18T02:32:20.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Progresses.cs",
               "DocumentMoniker": "D:\\C-projects\\roider\\roider\\Models\\Progresses.cs",
               "RelativeDocumentMoniker": "roider\\Models\\Progresses.cs",
               "ToolTip": "D:\\C-projects\\roider\\roider\\Models\\Progresses.cs",
               "RelativeToolTip": "roider\\Models\\Progresses.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAwwBcAAAANAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAIwBcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-15T03:26:15.895Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ProgressesController.cs",
               "DocumentMoniker": "D:\\C-projects\\roider\\roider\\Controllers\\ProgressesController.cs",
               "RelativeDocumentMoniker": "roider\\Controllers\\ProgressesController.cs",
@@ -43,8 +94,7 @@
               "RelativeToolTip": "roider\\Controllers\\ProgressesController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-15T03:26:13.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-15T03:26:13.885Z"
             }
           ]
         }
