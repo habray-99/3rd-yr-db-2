@@ -1,39 +1,48 @@
-﻿@model roider.Models.Students
+﻿@model Students
 
 @{
     ViewData["Title"] = "Register New Student";
     Layout = "_Layout";
 }
 
-<h2>Register New Student</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Register New Student</h2>
 
-<form asp-action="Create">
-    <div class="form-group">
-        <label asp-for="StudentName" class="control-label"></label>
-        <input asp-for="StudentName" class="form-control" />
-        <span asp-validation-for="StudentName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Contact" class="control-label"></label>
-        <input asp-for="Contact" class="form-control" />
-        <span asp-validation-for="Contact" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Dob" class="control-label"></label>
-        <input asp-for="Dob" class="form-control" type="date" />
-        <span asp-validation-for="Dob" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="EmailAddress" class="control-label"></label>
-        <input asp-for="EmailAddress" class="form-control" type="email" />
-        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Country" class="control-label"></label>
-        <input asp-for="Country" class="form-control" />
-        <span asp-validation-for="Country" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Register" class="btn btn-primary" />
-    </div>
-</form>
+    <form asp-action="Create" class="form-group">
+        <div class="form-group">
+            <label asp-for="StudentName" class="control-label"></label>
+            <input asp-for="StudentName" class="form-control"/>
+            <span asp-validation-for="StudentName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Contact" class="control-label"></label>
+            <input asp-for="Contact" class="form-control"/>
+            <span asp-validation-for="Contact" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Dob" class="control-label"></label>
+            <input asp-for="Dob" class="form-control" type="date"/>
+            <span asp-validation-for="Dob" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" class="form-control" type="email"/>
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Country" class="control-label"></label>
+            <select asp-for="Country" class="form-control">
+                @foreach (var country in ViewBag.CountriesList)
+                {
+                    <option value="@country.CountryCode">@country.CountryName</option>
+                }
+
+            </select>
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+
+        <div class="form-group text-center">
+            <input type="submit" value="Register" class="btn btn-primary"/>
+        </div>
+    </form>
+</div>

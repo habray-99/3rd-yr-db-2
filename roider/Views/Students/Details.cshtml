@@ -1,83 +1,86 @@
-﻿@model roider.Models.Students
+﻿@model Students
 
 @{
     ViewBag.Title = "Student Details";
     Layout = "_Layout";
 }
 
-<h2>Student Details</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Student Details</h2>
 
-<div>
-    <h4>Students</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StudentId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StudentName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Contact)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contact)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Dob)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Dob)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EmailAddress)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-    </dl>
-</div>
-<div class="btn-group" role="group">
-        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.StudentId">Edit</a>
-        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.StudentId">Delete</a>
-        @* <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.CourseId">Details</a> *@
+    <div>
+        <h4 class="text-center mb-4">Student Information</h4>
+        <hr/>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StudentId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StudentId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StudentName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StudentName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Contact)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Contact)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Dob)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Dob)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmailAddress)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Country)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Country)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@Model.StudentId">Edit</a>
+        <a class="btn btn-danger mr-2" asp-action="Delete" asp-route-id="@Model.StudentId">Delete</a>
         <a class="btn btn-outline-dark" asp-action="Index">Back</a>
     </div>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Student ID</th>
-        <th>Student Name</th>
-        <th>Course Title</th>
-        <th>Lesson Title</th>
-        <th>Lesson Status</th>
-        <th>Last Accessed Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var progress in Model.Progresses)
-    {
+    <h4 class="text-center mt-5 mb-4">Student Progress</h4>
+    <table class="table">
+        <thead>
         <tr>
-            <td>@progress.StudentId</td>
-            <td>@progress.StudentName</td>
-            <td>@progress.CourseTitle</td>
-            <td>@progress.LessonTitle</td>
-            <td>@progress.LessonStatus</td>
-            <td>@progress.LastAccessedDate.ToString("d")</td>
+            <th>Student ID</th>
+            @* <th>Student Name</th> *@
+            <th>Course Title</th>
+            <th>Lesson Title</th>
+            <th>Lesson Status</th>
+            <th>Last Accessed Date</th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var progress in Model.Progresses)
+        {
+            <tr>
+                <td>@progress.StudentId</td>
+                @* <td>@progress.StudentName</td> *@
+                <td>@progress.CourseTitle</td>
+                <td>@progress.LessonTitle</td>
+                <td>@progress.LessonStatus</td>
+                <td>@progress.LastAccessedDate.ToString("d")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
