@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/C-projects/roider/roider/Views/Courses/_CourseList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xfQ291cnNlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/C-projects/roider/roider/Views/Enrollments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/C-projects/roider/roider/Views/Enrollments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/C-projects/roider/roider/Views/Enrollments/_EnrollmentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudHNcX0Vucm9sbG1lbnRMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/C-projects/roider/roider/Views/Home/CourseView.cshtml]
@@ -90,6 +98,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/C-projects/roider/roider/Views/Instructors/_InstructorList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvcnNcX0luc3RydWN0b3JMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/C-projects/roider/roider/Views/Lessons/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -108,6 +120,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/C-projects/roider/roider/Views/Lessons/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/C-projects/roider/roider/Views/Lessons/_LessonList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uc1xfTGVzc29uTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/C-projects/roider/roider/Views/Progresses/Create.cshtml]
@@ -130,6 +146,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3Jlc3Nlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/C-projects/roider/roider/Views/Progresses/_ProgressList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3Jlc3Nlc1xfUHJvZ3Jlc3NMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/C-projects/roider/roider/Views/QAs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUUFzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -148,6 +168,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/C-projects/roider/roider/Views/QAs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUUFzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/C-projects/roider/roider/Views/QAs/_QAsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUUFzXF9RQXNMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/C-projects/roider/roider/Views/Shared/Error.cshtml]
@@ -176,6 +200,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/C-projects/roider/roider/Views/Students/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/C-projects/roider/roider/Views/Students/_StudentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudHNcX1N0dWRlbnRMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/C-projects/roider/roider/Views/_ViewImports.cshtml]
