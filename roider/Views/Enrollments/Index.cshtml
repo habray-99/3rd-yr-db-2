@@ -1,51 +1,55 @@
-﻿@model IEnumerable<roider.Models.Enrollments>
+﻿@model IEnumerable<Enrollments>
 
 @{
     ViewBag.Title = "New Enrollment";
     Layout = "_Layout";
 }
 
-<h2>Enrollments</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Enrollments</h2>
 
-<a class="btn btn-success" asp-action="Create">Create Enrollment</a>
-
-<!-- Search Box -->
-<div class="input-group mb-3 p-2">
-    <input type="text" class="form-control" id="searchInput" placeholder="Search enrollments">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+    <div class="text-center mb-4">
+        <a class="btn btn-success" asp-action="Create">Create Enrollment</a>
     </div>
-</div>
 
-<table class="table" id="enrollmentsTable">
-    <thead>
-    <tr>
-        <th>Enrollment ID</th>
-        <th>Student Name</th>
-        <th>Course Name</th>
-        <th>Date</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var enrollment in Model)
-    {
+    <!-- Search Box -->
+    <div class="input-group mb-3 p-2">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search enrollments">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+        </div>
+    </div>
+
+    <table class="table" id="enrollmentsTable">
+        <thead>
         <tr>
-            <td>@enrollment.EnrollmentId</td>
-            <td>@enrollment.Student?.StudentName</td>
-            <td>@enrollment.Course.CourseTitle</td>
-            <td>@enrollment.EnrollDate.ToString("d")</td>
-            <td>
-                <div class="btn-group" role="group">
+            <th>Enrollment ID</th>
+            <th>Student Name</th>
+            <th>Course Name</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var enrollment in Model)
+        {
+            <tr>
+                <td>@enrollment.EnrollmentId</td>
+                <td>@enrollment.Student?.StudentName</td>
+                <td>@enrollment.Course.CourseTitle</td>
+                <td>@enrollment.EnrollDate.ToString("d")</td>
+                <td>
+                    <div class="btn-group" role="group">
                         <a class="btn btn-primary" asp-action="Edit" asp-route-id="@enrollment.EnrollmentId">Edit</a>
                         <a class="btn btn-danger" asp-action="Delete" asp-route-id="@enrollment.EnrollmentId">Delete</a>
                         <a class="btn btn-secondary" asp-action="Details" asp-route-id="@enrollment.EnrollmentId">Details</a>
                     </div>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
 
 <script>
 document.getElementById('searchButton').addEventListener('click', function() {
