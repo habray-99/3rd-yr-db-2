@@ -1,24 +1,27 @@
-﻿@model System.Collections.Generic.List<roider.Models.Instructors>
+﻿@model List<Instructors>
 
 @{
     ViewBag.Title = "Instructors";
     Layout = "_Layout";
 }
 
-<h2>Instructors</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Instructors</h2>
 
-<a class="btn btn-success" asp-action="Create">Create Instructor</a>
-
-<!-- Search Box -->
-<div class="input-group mb-3 p-2">
-    <input type="text" class="form-control" id="searchInput" placeholder="Search instructors">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+    <div class="text-center mb-4">
+        <a class="btn btn-success" asp-action="Create">Create Instructor</a>
     </div>
-</div>
 
-<table class="table" id="instructorsTable">
-    <thead>
+    <!-- Search Box -->
+    <div class="input-group mb-3 p-2">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search instructors">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+        </div>
+    </div>
+
+    <table class="table" id="instructorsTable">
+        <thead>
         <tr>
             <th>Instructor ID</th>
             <th>Instructor Name</th>
@@ -29,8 +32,8 @@
             <th>Country</th>
             <th>Actions</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         @foreach (var instructor in Model)
         {
             <tr>
@@ -50,8 +53,9 @@
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 
 <script>
 document.getElementById('searchButton').addEventListener('click', function() {

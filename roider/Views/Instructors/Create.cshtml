@@ -1,48 +1,57 @@
-﻿@model roider.Models.Instructors
+﻿@model Instructors
 
 @{
     ViewBag.Title = "Create Instructor";
     Layout = "_Layout";
 }
 
-<h2>Create Instructor</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create Instructor</h2>
 
-<form asp-action="Create">
-    <div class="form-group">
-        <label asp-for="InstructorName" class="control-label"></label>
-        <input asp-for="InstructorName" class="form-control" />
-        <span asp-validation-for="InstructorName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Contact" class="control-label"></label>
-        <input asp-for="Contact" class="form-control" />
-        <span asp-validation-for="Contact" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="EmailAddress" class="control-label"></label>
-        <input asp-for="EmailAddress" class="form-control" />
-        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Specialization" class="control-label"></label>
-        <input asp-for="Specialization" class="form-control" />
-        <span asp-validation-for="Specialization" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="YearsOfExperience" class="control-label"></label>
-        <input asp-for="YearsOfExperience" class="form-control" />
-        <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Country" class="control-label"></label>
-        <input asp-for="Country" class="form-control" />
-        <span asp-validation-for="Country" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
-    </div>
-</form>
+    <form asp-action="Create" class="form-group">
+        <div class="form-group">
+            <label asp-for="InstructorName" class="control-label"></label>
+            <input asp-for="InstructorName" class="form-control"/>
+            <span asp-validation-for="InstructorName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Contact" class="control-label"></label>
+            <input asp-for="Contact" class="form-control"/>
+            <span asp-validation-for="Contact" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" class="form-control"/>
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Specialization" class="control-label"></label>
+            <input asp-for="Specialization" class="form-control"/>
+            <span asp-validation-for="Specialization" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="YearsOfExperience" class="control-label"></label>
+            <input asp-for="YearsOfExperience" class="form-control"/>
+            <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Country" class="control-label"></label>
+            <select asp-for="Country" class="form-control">
+                @foreach (var country in ViewBag.CountriesList)
+                {
+                    <option value="@country.CountryCode">@country.CountryName</option>
+                }
+        
+            </select>
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group text-center">
+            <input type="submit" value="Create" class="btn btn-primary"/>
+        </div>
+    </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div class="text-center mt-4">
+        <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+    </div>
 </div>

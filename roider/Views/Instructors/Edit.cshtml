@@ -1,52 +1,53 @@
-﻿@model roider.Models.Instructors
+﻿@model Instructors
 
 @{
     ViewBag.Title = "Edit Instructor";
     Layout = "_Layout";
 }
 
-<h2>Edit Instructor</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Instructor</h2>
 
-<form asp-action="Edit">
-    <input type="hidden" asp-for="InstructorId" />
-    <div class="form-group">
-        <label asp-for="InstructorName" class="control-label"></label>
-        <input asp-for="InstructorName" class="form-control" />
-        <span asp-validation-for="InstructorName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Contact" class="control-label"></label>
-        <input asp-for="Contact" class="form-control" />
-        <span asp-validation-for="Contact" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="EmailAddress" class="control-label"></label>
-        <input asp-for="EmailAddress" class="form-control" />
-        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Specialization" class="control-label"></label>
-        <input asp-for="Specialization" class="form-control" />
-        <span asp-validation-for="Specialization" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="YearsOfExperience" class="control-label"></label>
-        <input asp-for="YearsOfExperience" class="form-control" />
-        <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Country" class="control-label"></label>
-        <input asp-for="Country" class="form-control" />
-        <span asp-validation-for="Country" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-</form>
+    <form asp-action="Edit" class="form-group">
+        <input type="hidden" asp-for="InstructorId"/>
+        <div class="form-group">
+            <label asp-for="InstructorName" class="control-label"></label>
+            <input asp-for="InstructorName" class="form-control"/>
+            <span asp-validation-for="InstructorName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Contact" class="control-label"></label>
+            <input asp-for="Contact" class="form-control"/>
+            <span asp-validation-for="Contact" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" class="form-control"/>
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Specialization" class="control-label"></label>
+            <input asp-for="Specialization" class="form-control"/>
+            <span asp-validation-for="Specialization" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="YearsOfExperience" class="control-label"></label>
+            <input asp-for="YearsOfExperience" class="form-control"/>
+            <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Country" class="control-label"></label>
+            <input asp-for="Country" class="form-control"/>
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" value="Save" class="btn btn-primary"/>
+        </div>
+    </form>
 
-<div class="btn-group" role="group">
-    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.InstructorId">Edit</a>
-    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.InstructorId">Delete</a>
-    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.InstructorId">Details</a>
-    <a class="btn btn-outline-dark" asp-action="Index">Back</a>
+    <div class="text-center mt-4">
+        <a class="btn btn-danger mr-2" asp-action="Delete" asp-route-id="@Model.InstructorId">Delete</a>
+        <a class="btn btn-secondary mr-2" asp-action="Details" asp-route-id="@Model.InstructorId">Details</a>
+        <a class="btn btn-outline-dark" asp-action="Index">Back</a>
+    </div>
 </div>
