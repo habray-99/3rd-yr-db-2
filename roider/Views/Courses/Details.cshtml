@@ -1,85 +1,81 @@
-﻿@model roider.Models.Courses
+﻿@model Courses
 
 @{
     ViewBag.Title = "Course Details";
-    // Layout = "_Layout";
+    Layout = "_Layout";
 }
 
-<h2>Course Details</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Course Details</h2>
 
-<div>
-    <h4>Courses</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseTitle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CourseTitle)
-        </dd>
-    </dl>
-</div>
-<div class="btn-group" role="group">
-    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.CourseId">Edit</a>
-    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.CourseId">Delete</a>
-    @* <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.CourseId">Details</a> *@
-    <a class="btn btn-outline-dark" asp-action="Index">Back</a>
-</div>
-@if (Model.Instructors != null)
-{
-    
-<div>
-    <h4>Instructors</h4>
-    <hr />
-    <ul>
-        @foreach (var instructor in Model.Instructors)
-        {
-            <li>@instructor.InstructorName</li>
-        }
-    </ul>
-</div>
-}
+    <div>
+        <h4 class="text-center mb-4">Course Information</h4>
+        <hr/>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CourseId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CourseId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CourseTitle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CourseTitle)
+            </dd>
+        </dl>
+    </div>
 
+    <div class="text-center mt-4">
+        <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@Model.CourseId">Edit</a>
+        <a class="btn btn-danger mr-2" asp-action="Delete" asp-route-id="@Model.CourseId">Delete</a>
+        <a class="btn btn-outline-dark" asp-action="Index">Back</a>
+    </div>
 
-<div>
-    <h4>
-        Lessons
-    </h4>
-    <hr/>
-    
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Lesson ID</th>
-            <th>Lesson Title</th>
-            <th>Content Type</th>
-            @* <th>Course ID</th> *@
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var lesson in ViewBag.LessonList)
-        {
+    @if (Model.Instructors != null)
+    {
+        <div class="mt-4">
+            <h4 class="text-center mb-4">Instructors</h4>
+            <hr/>
+            <ul>
+                @foreach (var instructor in Model.Instructors)
+                {
+                    <li>@instructor.InstructorName</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <div class="mt-4">
+        <h4 class="text-center mb-4">Lessons</h4>
+        <hr/>
+        <table class="table">
+            <thead>
             <tr>
-                <td>@lesson.LessonId</td>
-                <td>@lesson.LessonTitle</td>
-                <td>@lesson.LessonContentType</td>
-                @* <td>@lesson.CourseId</td> *@
-                <td>
-                    <div class="btn-group mr-2" role="group">
-                        <a class="btn btn-primary" asp-controller="Lessons" asp-action="Edit" asp-route-id="@lesson.LessonId">Edit</a>
-                        <a class="btn btn-danger" asp-controller="Lessons" asp-action="Delete" asp-route-id="@lesson.LessonId">Delete</a>
-                        <a class="btn btn-outline-secondary" asp-controller="Lessons" asp-action="Details" asp-route-id="@lesson.LessonId">Detail</a>
-                    </div>
-                </td>
+                <th>Lesson ID</th>
+                <th>Lesson Title</th>
+                <th>Content Type</th>
+                <th>Actions</th>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach (var lesson in ViewBag.LessonList)
+            {
+                <tr>
+                    <td>@lesson.LessonId</td>
+                    <td>@lesson.LessonTitle</td>
+                    <td>@lesson.LessonContentType</td>
+                    <td>
+                        <div class="btn-group mr-2" role="group">
+                            <a class="btn btn-primary" asp-controller="Lessons" asp-action="Edit" asp-route-id="@lesson.LessonId">Edit</a>
+                            <a class="btn btn-danger" asp-controller="Lessons" asp-action="Delete" asp-route-id="@lesson.LessonId">Delete</a>
+                            <a class="btn btn-outline-secondary" asp-controller="Lessons" asp-action="Details" asp-route-id="@lesson.LessonId">Detail</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 </div>
