@@ -1,51 +1,53 @@
-﻿@model roider.Models.QAs
+﻿@model QAs
 
 @{
     ViewBag.Title = "Q&A Details";
     Layout = "_Layout";
 }
 
-<h2>Q&A Details</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Q&A Details</h2>
 
-<div>
-    <h4>Q&A</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StudentId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Question)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Question)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Answer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Answer)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FeedbackDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FeedbackDate)
-        </dd>
-    </dl>
-</div>
-<div class="btn-group" role="group">
-        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Qaid">Edit</a>
-        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Qaid">Delete</a>
-        @* <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.CourseId">Details</a> *@
+    <div>
+        <h4 class="text-center mb-4">Q&A</h4>
+        <hr/>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StudentId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StudentId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CourseId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CourseId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Question)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Question)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Answer)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Answer)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FeedbackDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FeedbackDate)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@Model.Qaid">Edit</a>
+        <a class="btn btn-danger mr-2" asp-action="Delete" asp-route-id="@Model.Qaid">Delete</a>
         <a class="btn btn-outline-dark" asp-action="Index">Back</a>
     </div>
+</div>

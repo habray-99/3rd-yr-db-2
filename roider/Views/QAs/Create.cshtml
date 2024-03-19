@@ -1,14 +1,15 @@
-﻿@model roider.Models.QAs
+﻿@model QAs
 
 @{
     ViewBag.Title = "Create Q&A";
     Layout = "_Layout";
 }
 
-<h2>Create Q&A</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create Q&A</h2>
 
-<form asp-action="Create">
-    <div class="form-group">
+    <form asp-action="Create" class="form-group">
+        <div class="form-group">
             <label asp-for="StudentId" class="control-label"></label>
             <select asp-for="StudentId" class="form-control">
                 @foreach (var student in ViewBag.StudentsList)
@@ -18,7 +19,7 @@
             </select>
             <span asp-validation-for="StudentId" class="text-danger"></span>
         </div>
-    <div class="form-group">
+        <div class="form-group">
             <label asp-for="CourseId" class="control-label"></label>
             <select asp-for="CourseId" class="form-control">
                 @foreach (var course in ViewBag.CoursesList)
@@ -26,29 +27,29 @@
                     <option value="@course.CourseId">@($"{course.CourseId} - {course.CourseTitle}")</option>
                 }
             </select>
-    
             <span asp-validation-for="CourseId" class="text-danger"></span>
         </div>
-    <div class="form-group">
-        <label asp-for="Question" class="control-label"></label>
-        <input asp-for="Question" class="form-control" />
-        <span asp-validation-for="Question" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Answer" class="control-label"></label>
-        <input asp-for="Answer" class="form-control" />
-        <span asp-validation-for="Answer" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="FeedbackDate" class="control-label"></label>
-        <input asp-for="FeedbackDate" class="form-control" />
-        <span asp-validation-for="FeedbackDate" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
-    </div>
-</form>
+        <div class="form-group">
+            <label asp-for="Question" class="control-label"></label>
+            <input asp-for="Question" class="form-control"/>
+            <span asp-validation-for="Question" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Answer" class="control-label"></label>
+            <input asp-for="Answer" class="form-control"/>
+            <span asp-validation-for="Answer" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FeedbackDate" class="control-label"></label>
+            <input asp-for="FeedbackDate" class="form-control"/>
+            <span asp-validation-for="FeedbackDate" class="text-danger"></span>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" value="Create" class="btn btn-primary"/>
+        </div>
+    </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div class="text-center mt-4">
+        <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+    </div>
 </div>
