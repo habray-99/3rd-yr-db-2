@@ -1,39 +1,41 @@
-﻿@model roider.Models.Lessons
+﻿@model Lessons
 
 @{
     ViewBag.Title = "Lesson Details";
     Layout = "_Layout";
 }
 
-<h2>Lesson Details</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Lesson Details</h2>
 
-<div>
-    <h4>Lessons</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LessonTitle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LessonTitle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LessonContentType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LessonContentType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>
-    </dl>
-</div>
-<div class="btn-group" role="group">
-        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.LessonId`">Edit</a>
-        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.LessonId">Delete</a>
-        @* <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.LessonId">Details</a> *@
+    <div>
+        <h4 class="text-center mb-4">Lesson Information</h4>
+        <hr/>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LessonTitle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LessonTitle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LessonContentType)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LessonContentType)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CourseId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CourseId)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@Model.LessonId">Edit</a>
+        <a class="btn btn-danger mr-2" asp-action="Delete" asp-route-id="@Model.LessonId">Delete</a>
         <a class="btn btn-outline-dark" asp-action="Index">Back</a>
     </div>
+</div>

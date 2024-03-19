@@ -1,33 +1,36 @@
-﻿@model System.Collections.Generic.List<roider.Models.Lessons>
+﻿@model List<Lessons>
 
 @{
     ViewBag.Title = "Lessons";
     Layout = "_Layout";
 }
 
-<h2>Lessons</h2>
-<a class="btn btn-success" asp-action="Create">Create Lesson</a>
-
-<!-- Search Box -->
-<div class="input-group mb-3 p-2">
-    <input type="text" class="form-control" id="searchInput" placeholder="Search lessons">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Lessons</h2>
+    <div class="text-center mb-4">
+        <a class="btn btn-success" asp-action="Create">Create Lesson</a>
     </div>
-</div>
 
-<table class="table" id="lessonsTable">
-    <thead>
+    <!-- Search Box -->
+    <div class="input-group mb-3 p-2">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search lessons">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+        </div>
+    </div>
+
+    <table class="table" id="lessonsTable">
+        <thead>
         <tr>
             <th>Lesson ID</th>
             <th>Lesson Title</th>
             <th>Content Type</th>
             <th>Course ID</th>
-             <th>Course Name</th>
+            <th>Course Name</th>
             <th>Actions</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         @foreach (var lesson in Model)
         {
             <tr>
@@ -42,12 +45,12 @@
                         <a class="btn btn-danger" asp-action="Delete" asp-route-id="@lesson.LessonId">Delete</a>
                         <a class="btn btn-secondary" asp-action="Details" asp-route-id="@lesson.LessonId">Details</a>
                     </div>
-                    
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 
 <script>
     document.getElementById('searchButton').addEventListener('click', function() {
@@ -63,5 +66,4 @@
             }
         });
     });
-
 </script>

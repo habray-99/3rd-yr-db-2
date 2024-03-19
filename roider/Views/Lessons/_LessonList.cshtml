@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.List<roider.Models.Lessons>
+﻿@model List<Lessons>
 
 @{
     ViewBag.Title = "Lessons";
@@ -27,19 +27,19 @@
     @*     </tr> *@
     @* </thead> *@
     <tbody>
-        @foreach (var lesson in Model)
-        {
-            <tr>
-                <td>@lesson.LessonId</td>
-                <td>@lesson.LessonTitle</td>
-                <td>@lesson.LessonContentType</td>
-                <td>@lesson.CourseId</td>
-                <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@lesson.LessonId">Edit</a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@lesson.LessonId">Delete</a>
-                </td>
-            </tr>
-        }
+    @foreach (var lesson in Model)
+    {
+        <tr>
+            <td>@lesson.LessonId</td>
+            <td>@lesson.LessonTitle</td>
+            <td>@lesson.LessonContentType</td>
+            <td>@lesson.CourseId</td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@lesson.LessonId">Edit</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@lesson.LessonId">Delete</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
 
