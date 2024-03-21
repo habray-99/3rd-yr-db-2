@@ -19,21 +19,45 @@ public class ProgressesController : Controller
     {
         var students = new Students().GetStudents();
         var lessons = new Lessons().FetchLessons();
+        var courses = new Courses().FetchCourses();
         ViewBag.StudentsList = students;
         ViewBag.LessonsList = lessons;
-        var courses = new Courses().FetchCourses();
         ViewBag.CoursesList = courses;
         return View();
     }
+    // GET: Progresses/Create
+    // public async Task<IActionResult> Create()
+    // {
+    //     var students = await new Students().GetStudentsAsync();
+    //     var lessons =  new Lessons().FetchLessons();
+    //     var courses =  new Courses().FetchCourses();
+    //     ViewBag.StudentsList = students;
+    //     ViewBag.LessonsList = lessons;
+    //     ViewBag.CoursesList = courses;
+    //     return View();
+    // }
+
 
     // POST: Progresses/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Progresses progress)
+    public IActionResult Create(Progresses progress)
     {
+        if (!ModelState.IsValid)
+        {
+            foreach (var modelState in ModelState.Values)
+            {
+                foreach (var error in modelState.Errors)
+                {
+                    // Log the error message
+                    System.Diagnostics.Debug.WriteLine(error.ErrorMessage);
+                }
+            }
+        }
+
         if (ModelState.IsValid)
         {
-            await _progressesModel.AddProgressAsync(progress);
+            _progressesModel.AddProgressAsync(progress);
             return RedirectToAction(nameof(Index));
         }
 
