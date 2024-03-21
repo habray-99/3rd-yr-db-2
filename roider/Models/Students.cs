@@ -87,6 +87,46 @@ public class Students
 
         return StudentsList;
     }
+    public async Task<List<Students>> GetStudentsAsync()
+    {
+        var StudentsList = new List<Students>();
+        try
+        {
+            using var con = new OracleConnection(ValuesConstants.DbString);
+            const string queryString =
+                "SELECT StudentID, StudentName, Contact, DOB, EmailAddress, Country_CODE FROM Student";
+            var cmd = new OracleCommand(queryString, con);
+            cmd.BindByName = true;
+            cmd.CommandType = CommandType.Text;
+
+            await con.OpenAsync();
+            var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                var student = new Students
+                {
+                    StudentId = reader.GetInt32(0),
+                    StudentName = reader.GetString(1),
+                    Contact = reader.GetString(2),
+                    Dob = reader.GetDateTime(3),
+                    EmailAddress = reader.GetString(4),
+                    Country = reader.GetString(5)
+                };
+                StudentsList.Add(student);
+            }
+
+            reader.Dispose();
+            con.Close();
+        }
+        catch (Exception ex)
+        {
+            // Consider logging the exception or handling it differently
+            Console.WriteLine(ex.Message);
+        }
+
+        return StudentsList;
+    }
+
 
     public void AddStudent(Students student)
     {
