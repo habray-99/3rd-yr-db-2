@@ -1,7 +1,7 @@
 ﻿@model Progresses
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create new Progress";
 }
 
 <div class="container mt-5">
@@ -11,35 +11,56 @@
     <hr/>
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form asp-action="Create" class="form-group">
+            <form asp-controller="Progresses" asp-action="Create" class="form-group">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="StudentId" class="control-label"></label>
                     <select asp-for="StudentId" class="form-control">
-                        @foreach (var student in ViewBag.StudentsList)
+                        @if (ViewBag.StudentsList != null)
                         {
-                            <option value="@student.StudentId">@($"{student.StudentId} - {student.StudentName}")</option>
+                            foreach (var student in ViewBag.StudentsList)
+                            {
+                                <option value="@student.StudentId">@($"{student.StudentId} - {student.StudentName}")</option>
+                            }
                         }
+
                     </select>
                     <span asp-validation-for="StudentId" class="text-danger"></span>
                 </div>
+                @* <div class="form-group"> *@
+                @*     <label asp-for="Course.CourseId" class="control-label"></label> *@
+                @*     <select asp-for="Course.CourseId" class="form-control"> *@
+                @*         @if (ViewBag.CoursesList != null) *@
+                @*             {@foreach (var course in ViewBag.CoursesList) *@
+                @*             { *@
+                @*                 <option value="@course.CourseId">@($"{course.CourseId} - {course.CourseTitle}")</option> *@
+                @*             }} *@
+                @*         } *@
+                @*     </select> *@
+                @*     <span asp-validation-for="Course.CourseId" class="text-danger"></span> *@
+                @* </div> *@
                 <div class="form-group">
-                    <label asp-for="Course.CourseId" class="control-label"></label>
-                    <select asp-for="Course.CourseId" class="form-control">
-                        @foreach (var course in ViewBag.CoursesList)
+                    <label asp-for="CourseId" class="control-label"></label>
+                    <select asp-for="CourseId" class="form-control">
+                        @if (ViewBag.CoursesList != null)
                         {
-                            <option value="@course.CourseId">@($"{course.CourseId} - {course.CourseTitle}")</option>
+                            foreach (var course in ViewBag.CoursesList)
+                            {
+                                <option value="@course.CourseId">@($"{course.CourseId} - {course.CourseTitle}")</option>
+                            }
                         }
                     </select>
-                    <span asp-validation-for="Course.CourseId" class="text-danger"></span>
+                    <span asp-validation-for="CourseId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="LessonId" class="control-label"></label>
                     <select asp-for="LessonId" class="form-control">
+                        @if (ViewBag.LessonsList != null)
+                        {
                         @foreach (var lesson in ViewBag.LessonsList)
                         {
                             <option value="@lesson.LessonId">@($"{lesson.LessonId} - {lesson.LessonTitle}")</option>
-                        }
+                        }}
                     </select>
                     <span asp-validation-for="LessonId" class="text-danger"></span>
                 </div>
@@ -55,12 +76,12 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="LastAccessedDate" class="control-label"></label>
-                    <input asp-for="LastAccessedDate" class="form-control"/>
+                    <input asp-for="LastAccessedDate" class="form-control" type="date"/>
                     <span asp-validation-for="LastAccessedDate" class="text-danger"></span>
                 </div>
                 <div class="form-group text-center">
-                    <input type="submit" value="Create" class="btn btn-primary"/>
-                </div>
+                            <input type="submit" value="Create" class="btn btn-primary"/>
+                        </div>
             </form>
         </div>
     </div>
@@ -69,7 +90,7 @@
         <a class="btn btn-outline-dark" asp-action="Index">Back</a>
     </div>
 </div>
-
-@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}
+@* *@
+@* @section Scripts { *@
+@*     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); } *@
+@* } *@

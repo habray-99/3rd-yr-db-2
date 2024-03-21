@@ -21,14 +21,14 @@
             <span asp-validation-for="StudentId" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Course.CourseId" class="control-label"></label>
-            <select asp-for="Course.CourseId" class="form-control">
+            <label asp-for="CourseId" class="control-label"></label>
+            <select asp-for="CourseId" class="form-control">
                 @foreach (var course in ViewBag.CoursesList)
                 {
                     <option value="@course.CourseId">@($"{course.CourseId} - {course.CourseTitle}")</option>
                 }
             </select>
-            <span asp-validation-for="Course.CourseId" class="text-danger"></span>
+            <span asp-validation-for="CourseId" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="LessonId" class="control-label"></label>
@@ -52,7 +52,7 @@
         </div>
         <div class="form-group">
             <label asp-for="LastAccessedDate" class="control-label"></label>
-            <input asp-for="LastAccessedDate" class="form-control"/>
+            <input asp-for="LastAccessedDate" class="form-control" type="date"/>
             <span asp-validation-for="LastAccessedDate" class="text-danger"></span>
         </div>
         <div class="form-group text-center">
